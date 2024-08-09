@@ -1,0 +1,388 @@
+{
+    "nq": [
+        {
+            "id": "-3857386299277171771",
+            "input": "which gem stone is produced by the secretion of some sea creatures",
+            "output": "pearl",
+            "context": "Document 1: (Title: Gemstones in the Bible)  is seldom mentioned in their writings. This also explains the difficulty experienced in scriptural translation. Gesenius (Thesaurus, p. 1113) translates phnynys (Job, xxviii, 18; Prov., iii, 15; viii, 11; xx, 15; xxxi, 10; Lam., iv, 7) as \"red coral\". However, pearl has also been interpreted to be the meaning in these passages. The coral referred to in the Bible is the precious coral (corallium rubrum), the formation of which is well known. It is a calcareous secretion of certain polyps resulting in a tree-like formation. Presently coral is found in the Mediterranean, the northern coast of Africa furnishing the dark red, Sardinia the yellow or salmon-coloured, and the coast of Italy the rose-pink coral. One of the greatest coral-fisheries of the present day is Torre del Greco, near Naples."
+        },
+        {
+            "id": "-7995828507420505016",
+            "input": "when will the live action lion king be released",
+            "output": "July 19 , 2019",
+            "context": "Document 1: (Title: The Lion King (2019 film))  The Lion King premiered in Hollywood on July 9, 2019. The film was theatrically released in the United States on July 19, 2019, in IMAX and 3D. It is one of the first theatrical films to be released on Disney+, alongside Aladdin, Toy Story 4, Frozen II, Captain Marvel, and Star Wars: The Rise of Skywalker. The film began its international rollout a week before its domestic release, starting with July 12 in China."
+        },
+        {
+            "id": "1631225219572511819",
+            "input": "who wrote the song bless the broken road",
+            "output": "Marcus Hummon",
+            "context": "Document 1: (Title: Bless the Broken Road)  \"Bless the Broken Road\" is a song that has been recorded by several American country music artists. Co-written by Marcus Hummon, Bobby Boyd, and Jeff Hanna in 1994, it tells how the journey through relationship heartbreak and disappointment was an important series of lessons along the broken road to finding one\u2019s true love. It was first recorded by the Nitty Gritty Dirt Band in 1994, followed by Hummon on his 1995 album All in Good Time. Since then, many artists have recorded the song with Rascal Flatts' version being the highest-charting, becoming a number 1 hit on the Billboard country music charts in 2005 and earning the songwriters a Grammy Award for Best Country Song."
+        },
+        {
+            "id": "-3242764249922422987",
+            "input": "who sings i don't want to lose your love tonight",
+            "output": "John O'Banion",
+            "context": "Document 1: (Title: I Don't Wanna Lose Your Love)  \"I Don't Wanna Lose Your Love\" is a song written by Joey Carbone and recorded by the American country music artist Crystal Gayle. It was released in February 1984 as the second single from the album Cage the Songbird. The song reached number 2 on the Billboard Hot Country Singles & Tracks chart. The song was originally sung by John O'Banion in 1982, titled \"I Don't Want to Lose Your Love\". He won the grand prize for the song at the 1982 Tokyo Music Festival."
+        },
+        {
+            "id": "-4991609438805368588",
+            "input": "who sings im going to stand by you",
+            "output": "Rachel Platten",
+            "context": "Document 1: (Title: I'll Stand by You)  \"I'll Stand by You\" is a song recorded by The Pretenders from their sixth studio album, Last of the Independents (1994). The song was written by Chrissie Hynde and the songwriting team of Tom Kelly and Billy Steinberg, and produced by Ian Stanley. The song is a ballad in which the singer pledges love and faithful assistance to a loved one in times of personal darkness. Released on April 11, 1994, \"I'll Stand by You\" reached the top 20 in several countries, including Australia, Belgium, Canada, Iceland, the United Kingdom, and the United States. It also became a major hit for British girl group Girls Aloud in 2004 and American country singer Carrie Underwood in 2007, both times recorded as a charity single. Colombian singer Shakira performed the song for the live charity telethon Hope for Haiti Now in 2010; her cover version was released on the charity benefit album, which was also entitled Hope for Haiti Now."
+        }
+    ],
+    "fever": [
+        {
+            "id": "147393",
+            "input": "Alison Brie is an actress.",
+            "output": "true",
+            "context": "Document 1: (Title: Alison Brie)  Alison Brie Schermerhorn (born December 29, 1982) is an American actress, writer, and producer. She had her breakthrough for portraying Trudy Campbell in the drama series Mad Men (2007\u20132015), which won her a Screen Actors Guild Award in 2009. She gained further prominence for her role as Annie Edison in the comedy series Community (2009\u20132015). Her notable work also includes Diane Nguyen in the animated comedy series BoJack Horseman (2014\u20132020) and Ruth Wilder in the comedy-drama series GLOW (2017\u20132019). For the latter, Brie received two Golden Globe Award nominations. In addition to her television work, Brie has also starred in films such as Scream 4 (2011), The Five-Year Engagement (2012), The Lego Movie (2014), Get Hard (2015), Sleeping with Other People (2015), How to Be Single (2016), The Little Hours (2017), The Disaster Artist (2017), The Post (2017), Promising Young Woman (2020), Horse Girl (2020), and The Rental (2020)."
+        },
+        {
+            "id": "41105",
+            "input": "Aishwarya Rai received one of the highest civilian awards.",
+            "output": "true",
+            "context": "Document 1: (Title: List of awards and nominations received by Aishwarya Rai)  as recall value which is at par with cinematic legends like Amitabh Bachchan and cricketing star Sachin Tendulkar. Incidentally, she is the only female who is part of the top 10 recognized celebrities from all walks of life. ; 2009 \u2013 Filmfare's \"Most Beautiful People\". ; 2010 \u2013 The India Today Women Award for Global Achievement. ; 2010 \u2013 GR8! Women Award for Social services and international recognition. ; 2010 \u2013 Teacher's Achievement Award \u2013 Teacher's people achievers award. ; 2011 \u2013 Femina \"India's Most Beautiful Woman\". ; 2011 \u2013 A newer variety of guava, produced by Padma Shri holticulturist Haji Kaleemullah was named after her. ; 2011 \u2013 FICCI Frames Excellence Awards \u2013 Decade "
+        },
+        {
+            "id": "156286",
+            "input": "The 2015 film Jurassic World generated five sequels.",
+            "output": "false",
+            "context": "Document 1: (Title: Jurassic World)  while developing a new script with Connolly. Filming lasted from April to August 2014 in Louisiana and Hawaii. The dinosaurs were created by Industrial Light & Magic using CGI and by Legacy Effects using life-sized animatronics. Production was completed in May 2015. Jurassic World was released in the United States on June 12, 2015. The film received generally positive reviews from critics and grossed $1.6 billion in box office revenue, reaching third among the highest-grossing films of all time. It was also the second-highest-grossing film of 2015 and the highest-grossing in the franchise. Two sequels have been released: Jurassic World: Fallen Kingdom (2018) and the upcoming Jurassic World: Dominion (2022)."
+        },
+        {
+            "id": "23613",
+            "input": "Ron Swanson loves breakfast foods.",
+            "output": "true",
+            "context": "Document 1: (Title: Ron Swanson)  yoga, except I still get to kill something.\" He is particularly attracted to brunettes and what he describes as \"strong, self-possessed women at the top of their fields,\" with professional athletes Steffi Graf and Sheryl Swoopes among his ideal women. He loves breakfast foods and red meats; among the types of food he enjoys are bacon-wrapped shrimp, fried turkey legs inside a grilled hamburger, and bacon-wrapped turkey legs, which are known in Pawnee as \"The Swanson.\" He also drinks heavily (once specifying his weekly consumption of alcohol to be \"one shelf\") but seldom feels the effects of alcohol or gets "
+        },
+        {
+            "id": "150884",
+            "input": "Stranger Things is a poem.",
+            "output": "false",
+            "context": "Document 1: (Title: Stranger Things (Kygo song))  \"Stranger Things\" is a song recorded by Norwegian DJ and record producer Kygo, featuring American pop rock band OneRepublic. It was composed by Kygo, Ryan Tedder and Casey Smith, with lyrics written by Tedder and production handled by Kygo. It was released on 24 January 2018 by Sony and Ultra Music, as the second single from Kygo's second studio album, Kids in Love (2017). Alan Walker remixed this song in February 2018."
+        }
+    ],
+    "hotpotqa": [
+        {
+            "id": "5ac2795455429963665199d1",
+            "input": "What is the American media company that produced The Hobbit: The Desolation of Smaug in collaboration with WingNut Films and New Line Cinema?",
+            "output": "Metro-Goldwyn-Mayer Studios Inc.",
+            "context": "Document 1: (Title: The Hobbit: The Desolation of Smaug)  The Hobbit: The Desolation of Smaug is a 2013 epic high-fantasy adventure film directed by Peter Jackson and produced by WingNut Films in collaboration with New Line Cinema, Warner Bros. Pictures and Metro-Goldwyn-Mayer. Warner Bros. Pictures served also as the distributor of this second instalment in the three-part film series based on the novel The Hobbit by J. R. R. Tolkien. The film was preceded by An Unexpected Journey (2012) and followed by The Battle of the Five Armies (2014); together they operate as a prequel to Jackson's The Lord of the Rings film trilogy. The film follows the titular character Bilbo Baggins as he accompanies Thorin Oakenshield and his fellow dwarves on a quest to reclaim the Lonely Mountain from the dragon Smaug. The film also features the vengeful pursuit of Azog the Defiler and Bolg, while Gandalf the Grey investigates a growing "
+        },
+        {
+            "id": "5ab96727554299131ca4232c",
+            "input": "Irresistible is the second studio album by American recording artist Jessica Simpson, released on May 25, 2001, Simpson described the material as \"Mariah Carey meets Britney Spears\", is an American singer, dancer, and actress, born on which date?",
+            "output": "December 2, 1981",
+            "context": "Document 1: (Title: Irresistible (Jessica Simpson album))  Irresistible is the second studio album by American recording artist Jessica Simpson, released on May 25, 2001, through Columbia Records. Simpson, who began working on the project in July 2000, contacted already established writers and producers to collaborate on the project, including Cory Rooney, Rodney Jerkins, and Walter Afanasieff. In contrast to her debut album Sweet Kisses (1999), which included more ballads, Irresistible explored hip hop and R&B genres of music. Simpson described the material as \"Mariah Carey meets Britney Spears\", indicating the soulfulness of the songs as well as their contemporary appeal. Lyrical themes addressed in the album include love and "
+        },
+        {
+            "id": "5a7e78ff55429934daa2fc29",
+            "input": "Which commercials were run against the healthcare reform package proposed by the administration of President Bill Clinton?",
+            "output": "the Harry and Louise commercials",
+            "context": "Document 1: (Title: Harry and Louise)  \"Harry and Louise\" was a $14 to $20 million year-long television advertising campaign funded by the Health Insurance Association of America (HIAA)\u2014a predecessor of the current America\u2019s Health Insurance Plans (AHIP)\u2014a health insurance industry lobby group, that ran intermittently from September 8, 1993 to September 1994 in opposition to President Bill Clinton's proposed health care plan in 1993\u20131994 and Congressional health care reform proposals in 1994. Fourteen television ads and radio and print advertising depicted a fictional suburban forty-something middle-class married couple, portrayed by actors Harry Johnson and Louise Caire Clark, despairing over bureaucratic and other aspects of health care reform plans and urging viewers to contact "
+        },
+        {
+            "id": "5ae4a00b5542995dadf2437e",
+            "input": "Willard is a city in Greene County, Missouri, it is part of the Springfield, the third-largest city in the state of Missouri and the county seat of Greene County, in which country?",
+            "output": "United States",
+            "context": "Document 1: (Title: Willard, Missouri)  Willard is a city in Greene County, Missouri, United States. As of the 2010 census, the city population was 5,288. It is part of the Springfield, Missouri Metropolitan Statistical Area."
+        },
+        {
+            "id": "5ae73ad7554299572ea54789",
+            "input": "What is the date of birth of the actor starring in Nobody's Baby",
+            "output": "21 March 1958",
+            "context": "Document 1: (Title: Nobody's Baby (1937 film))  Nobody's Baby is a 1937 American comedy film directed by Gus Meins and written by Harold Law, Hal Yates and Pat C. Flick. The film stars Patsy Kelly, Lyda Roberti, Lynne Overman, Robert Armstrong, Rosina Lawrence, and Don Alvarado. The film was released on April 23, 1937 by Metro-Goldwyn-Mayer."
+        }
+    ],
+    "zsre": [
+        {
+            "id": "6c1b2750-cf4b-4f55-afc2-bbda9e546eae",
+            "input": "The Kid Comes Back [SEP] director",
+            "output": "B. Reeves Eason",
+            "context": "Document 1: (Title: The Kid Comes Back)  The Kid Comes Back is a 1938 prizefight film directed by B. Reeves Eason and starring Wayne Morris, Barton MacLane, June Travis and \"Slapsie Maxie\" Rosenbloom. The title may be meant to remind audiences of Kid Galahad, a smash hit prizefight movie released the previous year starring Edward G. Robinson, Bette Davis, Humphrey Bogart, and Wayne Morris in the title role as a young boxer very similar to his part in The Kid Comes Back."
+        },
+        {
+            "id": "bd88d211-93a6-496d-a431-6b4ba14c2807",
+            "input": "Prince Nikita Alexandrovich of Russia [SEP] mother",
+            "output": "Grand Duchess Xenia Alexandrovna of Russia",
+            "context": "Document 1: (Title: Prince Nikita Alexandrovich of Russia)  Prince Nikita Alexandrovich of Russia (17 January [ O.S. 4 January] 1900 \u2013 12 September 1974) was the third son and fourth child of Grand Duke Alexander Mikhailovich of Russia and Grand Duchess Xenia Alexandrovna of Russia. He was a nephew of Tsar Nicholas II of Russia. Born in Imperial Russia during the reign of his uncle, Prince Nikita escaped the fate of many of his relatives who were killed by the Bolsheviks. He left Russia in April 1919, at age nineteen. In 1922, he married Countess Maria Vorontsova-Dashkova. The couple had two children."
+        },
+        {
+            "id": "26047db7-b88f-461e-a355-7f729ca7236a",
+            "input": "Namjilyn Norovbanzad [SEP] occupation",
+            "output": "singer",
+            "context": "Document 1: (Title: Namjilyn Norovbanzad) Urtiin Duu, Rough Trade Records 1996 "
+        },
+        {
+            "id": "d74a0a31-cbc6-4866-98bb-b834c21d3d99",
+            "input": "Covies [SEP] country of origin",
+            "output": "Ireland",
+            "context": "Document 1: (Title: Covies)  Covies is an Irish series of web-based drama short films created by Len Collin and is an online soap set in Westport, Ireland."
+        },
+        {
+            "id": "c9cb1695-6d60-4d1e-8130-7e85cdd5a8a5",
+            "input": "3 Deewarein [SEP] cast member",
+            "output": "Nagesh Kukunoor",
+            "context": "Document 1: (Title: 3 Deewarein)  3 Deewarein is a 2003 Indian Hindi-language crime film written, directed and co-starred by Nagesh Kukunoor. Juhi Chawla, Jackidata.iloce Shroff, Naseeruddin Shah, Gulshan Grover and Sujata Mehta form the rest of the cast. The film narrates the story of three prisoners and a documentary filmmaker who, while filming their reformation story in the prison, finds redemption with her own troubled marriage. The film was showcased among the Indian panorama section, at the 2003 International Film Festival of India. The film was also premiered at the Kolkata Film Festival. After having been screened at the Indian Film Festival of Los Angeles, where it was well received, the film was screened at the Commonwealth Festival at Manchester, it was nominated as one of the top five films, at the gala presentation. Nagesh Kukunoor has also received the Filmfare Award for Best Story."
+        }
+    ],
+    "trex": [
+        {
+            "id": "61ac59ed-336c-41ce-a170-806b5007f9a9",
+            "input": "Sadeq Khalilian [SEP] occupation",
+            "output": "economist",
+            "context": "Document 1: (Title: Sadeq Khalilian)  Sadeq Khalilian (, born 1959) is an Iranian conservative politician who currently serves as the governor of Khuzestan Province, since September 2021.He is the former Agriculture Minister from 2009 to 2013 in the government headed by Mahmoud Ahmedinejad."
+        },
+        {
+            "id": "3fe5ce30-3ea9-4503-9b0b-98f9c32e7db4",
+            "input": "Connected: An Autoblogography About Love, Death & Technology [SEP] director",
+            "output": "Tiffany Shlain",
+            "context": "Document 1: (Title: Connected: An Autoblogography About Love, Death &amp; Technology)  Critical reception has been mixed. The film received positive reviews on the aggregator Rotten Tomatoes."
+        },
+        {
+            "id": "92b19ebe-b082-470e-9e89-697692040f44",
+            "input": "Gustave Le Gray [SEP] country of citizenship",
+            "output": "France",
+            "context": "Document 1: (Title: Gustave Le Gray)  Gustave Le Gray was born on 30 August 1820 in Villiers-le-Bel, Val-d'Oise. He was an only child, and his parents encouraged him to become a solicitor's clerk, but from a young age he aspired to be an artist. He was originally trained as a painter, studying under Fran\u00e7ois-\u00c9douard Picot and Paul Delaroche. His parents financed a trip to Switzerland and Italy so that he could study art abroad, and he lived in Italy between 1843-1846 and painted portraits and scenes of the countryside. In 1844, he met and married Palmira Maddalena Gertrude Leonardi (born 23 March 1823), a laundress who he had six children with, although "
+        },
+        {
+            "id": "3ced5f73-c813-4f4f-9ddf-0fb73f43332a",
+            "input": "Charleston [SEP] located in the administrative territorial entity",
+            "output": "Hopkins County",
+            "context": "Document 1: (Title: Charleston, South Carolina)  Charleston is the largest city in the U.S. state of South Carolina, the county seat of Charleston County, and the principal city in the Charleston\u2013North Charleston metropolitan area. The city lies just south of the geographical midpoint of South Carolina's coastline on Charleston Harbor, an inlet of the Atlantic Ocean formed by the confluence of the Ashley, Cooper, and Wando rivers. Charleston had a population of 150,277 as of the 2020 U.S. Census. The 2020 population of the Charleston metropolitan area, comprising Berkeley, Charleston, and Dorchester counties, was 799,636 residents, the third-largest in the state and the 74th-largest metropolitan statistical area in the United States. Charleston was founded in 1670 as Charles Town, honoring "
+        },
+        {
+            "id": "1ace2e2e-a28a-4d1c-affe-c9144bd6bb22",
+            "input": "Paranagama Mandandawela [SEP] country",
+            "output": "Sri Lanka",
+            "context": "Document 1: (Title: Paranagama Mandandawela)  Paranagama Mandandawela is a village in Sri Lanka. It is located within Central Province."
+        }
+    ],
+    "trivia_qa": [
+        {
+            "id": "bb_7723",
+            "input": "Who was the first man to appear on the cover of the American Vogue?",
+            "output": "Richard Geer",
+            "context": "Document 1: (Title: Vogue (magazine))  woman to cover American Vogue. ; November 1988: Anna Wintour's first cover features Israeli model Michaela Bercu. ; May 1989: Madonna became the first celebrity or non-model to be pictured on the cover of Vogue. ; April 1992: Vogues 100th anniversary cover featuring 10 supermodels namely Naomi Campbell, Cindy Crawford, Linda Evangelista, Christy Turlington, Tatjana Patitz, Karen Mulder, Yasmeen Ghauri, Niki Taylor, Elaine Irwin,& Claudia Schiffer, and is the highest-selling issue ever. ; November 1992: Richard Gere becomes the first male to appear on the cover, alongside Cindy Crawford. ; December 1998: Hillary Clinton becomes the first American first lady to cover the magazine. ; September "
+        },
+        {
+            "id": "sfq_8016",
+            "input": "The motor racing circuit of Thruxton is in which county?",
+            "output": "Hamptonshire",
+            "context": "Document 1: (Title: Thruxton Circuit)  Thruxton Motorsport Centre is a motor-racing circuit located near the village of Thruxton in Hampshire, England which hosts motorsport events including British Touring Cars and Formula 3 racing. It is often referred to as the \"Fastest Circuit in the UK\" where drivers can reach speeds of over 300 km\/h and has earnt the reputation of being a true driver's track. To illustrate this, Damon Hill drove his Williams Formula One car around the circuit at an average speed of 147 mph in 1993. The site also houses the headquarters of the British Automobile Racing Club (BARC)."
+        },
+        {
+            "id": "wh_2034",
+            "input": "One of the most successful children's TV shows of all time was The Magic Roundabout. Which French animator created the show?",
+            "output": "Serge Danot",
+            "context": "Document 1: (Title: The Magic Roundabout)  The Magic Roundabout is an English-language children's television programme that ran from 1965 to 1977. It used the footage of the French stop motion animation show Le Man\u00e8ge enchant\u00e9, but with completely different scripts and characters. The French series, created by Serge Danot with the help of Ivor Wood and Wood's French wife, Josiane, was broadcast from 1964 to 1974 on ORTF (Office de Radiodiffusion T\u00e9l\u00e9vision Fran\u00e7aise). The BBC originally rejected translating the series because it was \"charming... but difficult to dub into English\", but later produced a version of the series using the French footage with new English-language scripts unrelated to the original storylines. This version, written and told by Eric Thompson, was broadcast in 441 five-minute-long episodes from 18 October 1965 to 25 January 1977. It proved a great success and attained cult status, and when in October 1966 it was moved from the slot just before the evening news to an earlier children's viewing time, adult viewers complained to the BBC."
+        },
+        {
+            "id": "qb_307",
+            "input": "John Lennon and Yoko Ono recorded \u2018Give Peace a Chance\u2019 at the Hotel La Reine in which city in Canada in 1969?",
+            "output": "Motnreal",
+            "context": "Document 1: (Title: John Lennon)   Lennon and Ono used their honeymoon as a Bed-In for Peace at the Amsterdam Hilton Hotel; the March 1969 event attracted worldwide media ridicule. During a second Bed-In three months later at the Queen Elizabeth Hotel in Montreal, Lennon wrote and recorded \"Give Peace a Chance\". Released as a single, the song was quickly interpreted as an anti-war anthem and sung by a quarter of a million demonstrators against the Vietnam War in Washington, DC, on 15 November, the second Vietnam Moratorium Day. In December, they paid for billboards in 10 cities around the world which declared, in the national language, \"War Is Over! If You Want It\". During the year, Lennon and "
+        },
+        {
+            "id": "sfq_15572",
+            "input": "In the Patrick O'Brian novels about Jack Aubrey, who is his doctor companion?",
+            "output": "STEPHEN MATURIN",
+            "context": "Document 1: (Title: Patrick O'Brian)  Patrick O'Brian, CBE (12 December 1914 \u2013 2 January 2000), born Richard Patrick Russ, was an English novelist and translator, best known for his Aubrey\u2013Maturin series of sea novels set in the Royal Navy during the Napoleonic Wars, and centred on the friendship of the English naval captain Jack Aubrey and the Irish\u2013Catalan physician Stephen Maturin. The 20-novel series, the first of which is Master and Commander, is known for its well-researched and highly detailed portrayal of early 19th-century life, as well as its authentic and evocative language. A partially finished 21st novel in the series was published posthumously containing facing pages of handwriting and typescript. O'Brian wrote a number of other "
+        }
+    ],
+    "wow": [
+        {
+            "id": "533620cc-99d6-11ea-8a20-773209e30a7b_4",
+            "input": "Valedictorian is a title that's used in more then just the US, but I don't envy them that speech they make.\nto be honest i dont know much about Valedictorian could you tell me more about it?\nIt usuallly is the one with the highest grade point average (GPA) among the graduating class.\nthat is defenetly not me hahaha, what about you where you a Valedictorian in your class?\nNo, I did well but not that well. They give a speech as a final farewell to the classmates.\nYeah i have heard some of the speeches and they tend to be really good, people really work hard on them\nIn Australia they do it different- it's often based on contribution not just grades.\nthat is good beacuse not just the smartest one will give the speech other people will have a chance as well",
+            "output": "THey call them the dux which is latin for leader.",
+            "context": "Document 1: (Title: Valedictorian)  Valedictorian is an academic title of success used in the United States, Canada, Kuwait, Egypt, Philippines, and Greece (and elsewhere in a limited number of schools) for the student who delivers the closing or farewell statement at a graduation ceremony (called a valediction). The chosen valedictorian is traditionally the student with the highest academic standing among their graduating class, and that standing is commonly determined by a numerical formula for Grade Point Average (GPA), but other methods of selection are also in use. The term is an Anglicised derivation of the Latin vale dicere (\"to say farewell\"), historically rooted in the valedictorian's traditional role as the final speaker at the graduation ceremony before the students receive their diplomas. The "
+        },
+        {
+            "id": "91237ba0-99d6-11ea-8a20-773209e30a7b_2",
+            "input": "My favorite sport is hockey, do you know much about it?\ni love hockey! Such a fun sport to watch. Two teams of skaters use their sticks to shoot puck into the net, what could be better?\nAnd it is on ice. I always thought it might be dangerous to sit there and watch.\nyeah hockey it's very fast paced and physical but it's not dangerous if you're watching it because there is a glass that protecting people\nThe pucks never fly up into the stands? That is my biggest fear.",
+            "output": "i don't think so, i've never seen it :) i'm from russia, hockey is so popular there",
+            "context": "Document 1: (Title: Foot hockey)  to throw or place it on the ground, but only to themselves. In other words, the ball cannot be hand passed to another player, or thrown into the net. In organised events, helmets may be required, and is recommended by some. The game is considered to be a safe sport. One of the important rules is interference. If the goalie is kicked or pushed it is an interference and the team which was interfered is granted the ball and is no goal if it enters the net. There are also interferences during out of net play. The common playground interference is when people that aren't playing run into the way of the ball. The consequences differ "
+        },
+        {
+            "id": "6fe19f1c-99d6-11ea-8a20-773209e30a7b_1",
+            "input": "What do you know about classical music? I enjoy listening to the symphony in my hometown, but I am clueless about it.\nI believe Classical music is art music produced or rooted in the traditions of Western culture.It is very secular.\nIs it very secular? It seems like I have heard a lot of Christian based classical music.",
+            "output": "A more precise term is also used to refer to the period from 1750 to 1820.It is known as the Classical period.",
+            "context": "Document 1: (Title: Heavy metal music)  has stated that \"If done correctly, metal and classical fit quite well together. Classical and metal are probably the two genres that have the most in common when it comes to feel, texture, creativity.\" Although a number of metal musicians cite classical composers as inspiration, classical and metal are rooted in different cultural traditions and practices\u2014classical in the art music tradition, metal in the popular music tradition. As musicologists Nicolas Cook and Nicola Dibben note, \"Analyses of popular music also sometimes reveal the influence of 'art traditions'. An example is Walser's linkage of heavy metal music with the ideologies and even some of the performance practices of nineteenth-century Romanticism. However, it would be clearly wrong to claim that traditions such as blues, rock, heavy metal, rap or dance music derive primarily from \"art music'.\""
+        },
+        {
+            "id": "5b95d370-99d6-11ea-8a20-773209e30a7b_3",
+            "input": "Ive always wanted to be a journalist but really dont know too much about it, Can you tell me some things I should know about it? Like is it a hard job? \nI imagine it depends.  There are so many types:  print, radio, internet and tv\nIndeed there are, Do you happen to know the salary of a journalist? I imagine its a lot. \nAgain there are so many different types.  Journalism is basically just reporting on the facts and events\nTrue, I want to be a journalist but dont even know where to start, Do I have to go to college to be one? \nI imagine it would be helpful.  But the role of a journalist has changed a lot over the years, especiially with news on the internet\nYea todays journalism is mostly on the internet and many times on camera, not like the old pen and paper style. ",
+            "output": "YEs and in some countries, the media is controlled by the government",
+            "context": "Document 1: (Title: Glossary of journalism)  journalism: The production and distribution of reports on current events based on facts and supported with proof or evidence, practiced by professional or amateur. Common types of journalistic media include print, television, radio, and the Internet. journalist: jump line: A line of type at the bottom of an incomplete newspaper or magazine article which directs the reader to another page where the story is continued. The term may also refer to the line at the top of the continued article indicating the page from which it was continued, also called a. See also."
+        },
+        {
+            "id": "5a6f80ae-99d6-11ea-8a20-773209e30a7b_3",
+            "input": "vegetariasim originated and is from root of india and greece\nI see but why would anyone not eat meat?\nsome people dont like meat, and it irritates them and believe the animals are sacred\nI see. But how will they get their protein and amino acids\nsome started it because of the idea of non violence to animal, protein can be obtained also from plant such as almond milk, soy milk and all others, they eat peas also\nI see. but is it true vegan do not heal up fast once they get injured?",
+            "output": "yes because they dont eat meat, and most of the world population are made up of 4% vegan",
+            "context": "Document 1: (Title: Vegan nutrition)  Proteins are composed of amino acids. Vegans obtain all their protein from plants, omnivores usually a third, and ovo-lacto vegetarians half. Sources of plant protein include legumes such as soy beans (consumed as tofu, tempeh, textured vegetable protein, soy milk, and edamame), peas, peanuts, black beans, and chickpeas (the latter often eaten as hummus); grains such as quinoa, brown rice, corn, barley, bulgur, and wheat (the latter eaten as bread and seitan); and nuts and seeds. Combinations that contain high amounts of all the essential amino acids include rice and beans, corn and beans, and hummus and whole-wheat pita. In 2012, the United States Department of "
+        }
+    ],
+    "arc_c": [
+        {
+            "id": "Mercury_7015750",
+            "input": "What is the most common element in a star such as the Sun?\nA: helium\nB: oxygen\nC: nitrogen\nD: hydrogen",
+            "output": "D"
+        },
+        {
+            "id": "NYSEDREGENTS_2011_8_43",
+            "input": "A student pushes against a tree with a force of 10 newtons (N). The tree does not move. What is the amount of force exerted by the tree on the student?\nA: 0 N\nB: 5 N\nC: 10 N\nD: 20 N",
+            "output": "C"
+        },
+        {
+            "id": "Mercury_7212345",
+            "input": "Acid rain has a pH below 5.6. This rain can damage soil, lakes, crops, and buildings. Acid rain is caused by all of the following except\nA: industrial emissions from factories.\nB: coal that is burned to produce heat and power.\nC: automobile exhaust.\nD: nuclear power plants that produce radiation.",
+            "output": "D"
+        },
+        {
+            "id": "MCAS_1999_8_34",
+            "input": "If a new moon occurred on June 2, when will the next new moon occur?\nA: June 30\nB: June 28\nC: June 23\nD: June 15",
+            "output": "A"
+        },
+        {
+            "id": "Mercury_SC_411900",
+            "input": "Which action has most helped scientists find cures to some diseases?\nA: buying new equipment\nB: learning about bacteria\nC: finding chemicals in plants\nD: avoiding poisonous animals",
+            "output": "B"
+        }
+    ],
+    "boolq": [
+        {
+            "id": "359",
+            "input": "is rough er part of the endomembrane system\nPassage: Many types of cells export proteins produced by ribosomes attached to the rough ER. The ribosomes assemble amino acids into protein units, which are carried into the rough ER for further adjustments. These proteins may be either transmembrane proteins, which become embedded in the membrane of the endoplasmic reticulum, or water-soluble proteins, which are able to pass through the membrane into the lumen. Those that reach the inside of the endoplasmic reticulum are folded into the correct three-dimensional conformation. Chemicals, such as carbohydrates or sugars, are added, then the endoplasmic reticulum either transports the completed proteins, called secretory proteins, to areas of the cell where they are needed, or they are sent to the Golgi apparatus for further processing and modification.",
+            "output": "yes"
+        },
+        {
+            "id": "7316",
+            "input": "is it still the law to register for the draft\nPassage: The Selective Service System is an independent agency of the United States government that maintains information on those potentially subject to military conscription. Virtually all male U.S. citizens and male immigrant non-citizens between the ages of 18 and 25 are required by law to have registered within 30 days of their 18th birthdays and must notify Selective Service within ten days of any changes to any of the information they provided on their registration cards, like a change of address. A 2010 Government Accountability Office report estimated the registration rate at 92% with the names and addresses of over 16.2 million men on file. However, the only audit of the addresses of registrants on file with the Selective Service System, in 1982, found that 20--40% of the addresses on file with the Selective Service System for registrants in the age groups that would be drafted first were already outdated, and up to 75% for those registrants in their last year of potential eligibility to be drafted would be invalid.",
+            "output": "yes"
+        },
+        {
+            "id": "7229",
+            "input": "is there going to be a new season of rake\nPassage: Rake is an Australian television program, produced by Essential Media and Entertainment, that first aired on the Australian Broadcasting Corporation's ABC1 in 2010. The fourth series started on ABC TV on 19 May 2016. It stars Richard Roxburgh as rake Cleaver Greene, a brilliant but self-destructive Sydney barrister, defending a usually guilty client. The show airs in the United States on DirecTV's Audience Network and is available on Netflix in the UK, Ireland, Canada, the United States, the Netherlands, India, Australia and New Zealand. A fifth and final series went into production in October 2017 and premiered on August 19, 2018.",
+            "output": "no"
+        },
+        {
+            "id": "8745",
+            "input": "did the nfl ever play 6 preseason games\nPassage: With the AFL--NFL merger of 1970, the newly merged NFL was granted a Sherman Anti-Trust Act exemption, which emboldened some team owners to expand the exhibition schedule and to require season-ticket holders to pay for one, then two, then three home exhibition games if they wanted to keep their season tickets. The exhibition season then became, and remains, a large source of owner revenue that is not shared with the players. From 1970 through 1977, the NFL season consisted of 14 regular season games and six exhibition games, sometimes but not always three at home and three away (the 1973 Washington Redskins, for instance, played all but one of six preseason games at home), with some played at neutral sites. Since 1978, the regular season is 16 games, and the exhibition season was cut from six to four games. Two teams play five exhibition games, however.",
+            "output": "yes"
+        },
+        {
+            "id": "747",
+            "input": "is cow milk the same as breast milk\nPassage: Whole cow's milk contains too little iron, retinol, vitamin E, vitamin C, vitamin D, unsaturated fats or essential fatty acids for human babies. Whole cow's milk also contains too much protein, sodium, potassium, phosphorus and chloride which may put a strain on an infant's immature kidneys. In addition, the proteins, fats and calcium in whole cow's milk are more difficult for an infant to digest and absorb than the ones in breast milk. Evaporated milk may be easier to digest due to the processing of the protein but is still nutritionally inadequate. Some infants are allergic to cow's milk protein, this problem may be associated with infant formulas derived from cow's milk.",
+            "output": "no"
+        }
+    ],
+    "csqa": [
+        {
+            "id": "1d9fa8cbc9c9adb1713cc02760b39bfa",
+            "input": "What European country is famous for its potato industry?\nA: idaho\nB: casserole\nC: new hampshire\nD: root cellar\nE: ireland",
+            "output": "E"
+        },
+        {
+            "id": "e09d4ccb3ed5054884ed76f8eee94511",
+            "input": "Mandy was naturally entertaining.  She enjoyed making people feel good and hoped that she could bring lasting what to them?\nA: happiness\nB: laughter\nC: fulfillment\nD: like\nE: infection",
+            "output": "A"            
+        },
+        {
+            "id": "2fc461f22acc3094f730cd95dda446d8",
+            "input": "What should one do in order to relieve burnout from staying too long at home?\nA: elapsed time\nB: relaxation\nC: exit\nD: uneasiness\nE: getting there",
+            "output": "B"
+        },
+        {
+            "id": "dcbec0d11c0fdc840a168a14c53d9b36",
+            "input": "John knows that molecules are very important.  Where might John look for them?\nA: elements\nB: substance\nC: anything\nD: air\nE: hands",
+            "output": "C"
+        },
+        {
+            "id": "5d6003d102709a69ce82a8cef6cd9f63",
+            "input": "On what surface does a bean bag chair sit?\nA: floor\nB: den\nC: rooms\nD: house\nE: family room",
+            "output": "A"
+        }
+    ],
+    "obqa": [
+        {
+            "id": "10-810",
+            "input": "What dissolves in water when combined?\nA: crystal carbohydrates\nB: iron\nC: oil\nD: plastic",
+            "output": "A"
+        },
+        {
+            "id": "9-459",
+            "input": "The layer of material on the bottom of the Snake River was put there by what?\nA: fish swimming\nB: weather related degradation\nC: global warming\nD: animal movement",
+            "output": "B"
+        },
+        {
+            "id": "14-1168",
+            "input": "Some humans live in what?\nA: lakes\nB: trees\nC: oceans\nD: homes",
+            "output": "D"
+        },
+        {
+            "id": "9-5",
+            "input": "as the year progress from June to November the hours of light per day\nA: increases by a few hours\nB: decreases by a few hours\nC: decreases by 10 minutes\nD: increases by 10 minutes",
+            "output": "B"
+        },
+        {
+            "id": "14-938",
+            "input": "What changes an ecosystem?\nA: sunbathing\nB: rock climbing\nC: extracting coal\nD: swimming",
+            "output": "C"
+        }
+    ],
+    "piqa": [
+        {
+            "id": "10228",
+            "input": "Create a garden shovel.\nA: Draw a shovel shape on old cardboard milk carton and cut out.\nB: Draw a shovel shape on old plastic milk jug and cut out.",
+            "output": "B"
+        },
+        {
+            "id": "4931",
+            "input": "How to pack breakable knick knacks when moving.\nA: Wrap each knick knack in layers of newspaper and place in flat layer in cardboard box, top with more unwrapped knick knacks, keep repeating this process.\nB: Wrap each knick knack in layers of newspaper and place in flat layer in cardboard box, top with extra newspaper and keep repeating this process.",
+            "output": "B"
+        },
+        {
+            "id": "7226",
+            "input": "how do you use poppers?\nA: throw them at the ground.\nB: put them in water.",
+            "output": "A"
+        },
+        {
+            "id": "181",
+            "input": "how to easily slice avocados\nA: split them in half, remove the pit by whacking it with the heel of your knife and twisting it out, then slice it directly in the skin using the tip of a paring knife or chef's knife. When you then scoop it out with a spoon, you'll have slices ready to go\nB: split them in half, remove the pit by whacking it with the heel of your knife and twisting it out, then slice it directly under the pit using the tip of a paring knife or chef's knife. When you then scoop it out with a spoon, you'll have slices ready to go",
+            "output": "A"
+        },
+        {
+            "id": "9053",
+            "input": "Remove baked on food from a cooking pan without scrubbing.\nA: Any baking pan that has tough, baked on food in it can be cleaned without scrubbing by filling with warm water and placing an unused dryer sheet in the pan. Allow the pan to sit overnight. Remove the dryer sheet and dump the water in the morning and all of the baked on food will pour out with the water without any scrubbing needed.\nB: Any baking pan that has tough, baked on food in it can be cleaned without scrubbing by filling with warm water and placing an unused dryer sheet in the pan. Allow the pan to sit overnight. Remove the dryer sheep and dump the water in the morning and all of the baked on towels will pour out with the water without any scrubbing needed.",
+            "output": "A"
+        }
+    ],
+    "wg": [
+        {
+            "id": "5659",
+            "input": "Craig was caught shaving his legs unlike Eric because _ decided to do it in public.\nA: Craig\nB: Eric",
+            "output": "A"
+        },
+        {
+            "id": "5884",
+            "input": "I often cook food in either the microwave or oven. Sometimes you're just hungry though so the _ is best.\nA: microwave\nB: oven",
+            "output": "A"
+        },
+        {
+            "id": "9082",
+            "input": "Eric found a lot of success in telemarketing products while Randy was reclusive since _ was extroverted.\nA: Eric\nB: Randy",
+            "output": "A"
+        },
+        {
+            "id": "5063",
+            "input": "Logan thought the aquarium needed a new fish but Robert though it needed something different so _ bought a seahorse for it.\nA: Logan\nB: Robert",
+            "output": "B"
+        },
+        {
+            "id": "3205",
+            "input": "Ryan was having kidney infection problems but Ian was fine. _ needed to drink a lot of cranberry juice.\nA: Ryan\nB: Ian",
+            "output": "A"
+        }
+    ]
+}
