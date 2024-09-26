@@ -286,7 +286,8 @@ def save_with_accelerate(accelerator, model, output_dir):
 def tokenize_func(example, tokenizer, max_length):
     input_ids = []
     attention_mask = []
-    
+    token_type_ids = None
+
     # RoBERTa doesn't use token_type_ids
     if not (isinstance(tokenizer, transformers.XLMRobertaTokenizer) or isinstance(tokenizer, transformers.RobertaTokenizer)):
         token_type_ids = []
