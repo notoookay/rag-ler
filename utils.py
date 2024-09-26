@@ -2,6 +2,11 @@ import jsonlines
 import json
 import copy
 import re
+import time
+
+from accelerate import Accelerator
+from typing import Optional
+from huggingface_hub import HfApi
 
 PROMPT_DICT = {
     "prompt_input": (
@@ -162,3 +167,63 @@ def process_arc_instruction(item, instruction):
         choices += "\nE: {}".format(answer_labels["E"])
     processed_instruction = instruction + "\n\n### Input:\n" + item["instruction"] + choices
     return processed_instruction
+
+
+def retry_on_exception(max_attempts=4, delay=1, backoff=2):
+    """
+    Retry a function on exception. Useful for HF API calls that may fail due to
+    network issues. E.g., https://beaker.org/ex/01J69P87HJQQ7X5DXE1CPWF974
+    `huggingface_hub.utils._errors.HfHubHTTPError: 429 Client Error`
+
+    We can test it with the following code.
+    @retry_on_exception(max_attempts=4, delay=1, backoff=2)
+    def test():
+        raise Exception("Test exception")
+
+    test()
+    """
+
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            attempts = 0
+            local_delay = delay
+            while attempts < max_attempts:
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    attempts += 1
+                    if attempts == max_attempts:
+                        raise e
+                    print(f"Attempt {attempts} failed. Retrying in {local_delay} seconds...")
+                    time.sleep(local_delay)
+                    local_delay *= backoff
+            return None
+
+        return wrapper
+
+    return decorator
+
+@retry_on_exception()
+def push_folder_to_hub(
+    accelerator: Accelerator,
+    output_dir: str,
+    hf_repo_id: Optional[str] = None,
+    hf_repo_revision: Optional[str] = None,
+    private: bool = True,
+):
+    if accelerator.is_main_process:
+        hf_repo_url = f"https://huggingface.co/{hf_repo_id}/tree/{hf_repo_revision}"
+        api = HfApi()
+        if not api.repo_exists(hf_repo_id):
+            api.create_repo(hf_repo_id, exist_ok=True, private=private)
+        if hf_repo_revision is not None:
+            api.create_branch(repo_id=hf_repo_id, branch=hf_repo_revision, exist_ok=True)
+        api.upload_folder(
+            repo_id=hf_repo_id,
+            revision=hf_repo_revision,
+            folder_path=output_dir,
+            commit_message="upload checkpoint",
+            run_as_future=False,
+        )
+        print(f"🔥 pushed to {hf_repo_url}")

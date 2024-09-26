@@ -8,6 +8,8 @@ import os
 import random
 import datasets
 from datetime import timedelta, datetime
+import time
+
 import torch
 from torch.nn import functional as F
 from functools import partial
@@ -17,7 +19,6 @@ from accelerate.utils import set_seed, InitProcessGroupKwargs
 from datasets import load_dataset
 from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
-
 import transformers
 from transformers import (
     AutoConfig,
@@ -26,6 +27,9 @@ from transformers import (
     SchedulerType,
     get_scheduler,
 )
+from huggingface_hub import HfApi
+
+from utils import push_folder_to_hub
 
 logger = get_logger(__name__)
 
@@ -226,6 +230,12 @@ def parse_args():
         type=int,
         default=30,
         help='Number of contexts to consider for the task.',
+    )
+    parser.add_argument(
+        '--push_to_hub',
+        action='store_true',
+        default=True,
+        help='Push the model to the hub when training ends.',
     )
     args = parser.parse_args()
 
@@ -636,6 +646,19 @@ def main():
         if accelerator.is_main_process:
             tokenizer.save_pretrained(output_dir)
         save_with_accelerate(accelerator, model, output_dir)
+
+    if args.push_to_hub:
+        if args.hf_repo_id is None:  # auto-generate one
+            args.hf_repo_id = "open_instruct_dev"
+        if args.hf_entity is None:  # try to use the user's entity
+            args.hf_entity = HfApi().whoami()["name"]
+        args.hf_repo_id = f"{args.hf_entity}/{args.hf_repo_id}"
+        if args.hf_repo_revision is None:  # auto-generate one
+            args.hf_repo_revision = (
+                f"{args.exp_name}__{args.model_name_or_path.replace('/', '_')}__{args.seed}__{int(time.time())}"
+            )
+        args.hf_repo_url = f"https://huggingface.co/{args.hf_repo_id}/tree/{args.hf_repo_revision}"
+        push_folder_to_hub(accelerator, args.output_dir, args.hf_repo_id, args.hf_repo_revision, private=args.private)
 
 
 if __name__ == "__main__":
