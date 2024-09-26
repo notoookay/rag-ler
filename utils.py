@@ -3,6 +3,7 @@ import json
 import copy
 import re
 import time
+import functools
 
 from accelerate import Accelerator
 from typing import Optional

@@ -51,6 +51,12 @@ def parse_args():
         "--train_file", type=str, default=None, help="A json file containing the training data."
     )
     parser.add_argument(
+        "--max_train_samples",
+        type=int,
+        default=None,
+        help="For debugging purposes or quicker training, limit the number of training examples.",
+    )
+    parser.add_argument(
         "--model_name_or_path",
         type=str,
         help="Path to pretrained model or model identifier from huggingface.co/models.",
@@ -397,6 +403,12 @@ def main():
         model = AutoModelForSequenceClassification.from_config(config)
 
     train_dataset = raw_datasets["train"]
+
+    # debugging tool for fewer samples
+    if args.max_train_samples is not None:
+        max_train_samples = min(len(train_dataset), args.max_train_samples)
+        logger.info(f"Limiting training samples to {max_train_samples} from {len(train_dataset)}.")
+        train_dataset = train_dataset.select(range(max_train_samples))
     
     # tokenize the dataset
     train_dataset = train_dataset.map(
