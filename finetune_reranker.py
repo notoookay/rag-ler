@@ -174,7 +174,7 @@ def parse_args():
     parser.add_argument(
         "--experiment_name",
         type=str,
-        default="open-instruct",
+        default=os.path.basename(__file__)[: -len(".py")],
         help="Specify the experiment name for tracking experiment with tools like"
              "`wandb`, `mlflow`, `tensorboard`."
     )
@@ -685,7 +685,7 @@ def main():
         args.hf_repo_id = f"{args.hf_entity}/{args.hf_repo_id}"
         if args.hf_repo_revision is None:  # auto-generate one
             args.hf_repo_revision = (
-                f"{args.exp_name}__{args.model_name_or_path.replace('/', '_')}__{args.seed}__{int(time.time())}"
+                f"{args.experiment_name}__{args.model_name_or_path.replace('/', '_')}__{args.seed}__{int(time.time())}"
             )
         args.hf_repo_url = f"https://huggingface.co/{args.hf_repo_id}/tree/{args.hf_repo_revision}"
         push_folder_to_hub(accelerator, args.output_dir, args.hf_repo_id, args.hf_repo_revision, private=args.private)
