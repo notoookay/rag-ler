@@ -243,6 +243,24 @@ def parse_args():
         default=True,
         help='Push the model to the hub when training ends.',
     )
+    parser.add_argument(
+        '--hf_repo_id',
+        type=str,
+        default=None,
+        help='The name of the repo to push to.',
+    )
+    parser.add_argument(
+        '--hf_entity',
+        type=str,
+        default=None,
+        help='The name of the entity to push to.',
+    )
+    parser.add_argument(
+        '--hf_repo_revision',
+        type=str,
+        default=None,
+        help='The revision of the repo to push to.',
+    )
     args = parser.parse_args()
 
     # Sanity checks
@@ -661,7 +679,7 @@ def main():
 
     if args.push_to_hub:
         if args.hf_repo_id is None:  # auto-generate one
-            args.hf_repo_id = "open_instruct_dev"
+            args.hf_repo_id = "rag_ler_dev"
         if args.hf_entity is None:  # try to use the user's entity
             args.hf_entity = HfApi().whoami()["name"]
         args.hf_repo_id = f"{args.hf_entity}/{args.hf_repo_id}"
