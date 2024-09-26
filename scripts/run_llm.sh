@@ -7,7 +7,7 @@ EXPERIMENT_NAME="Evaluation"
 
 python run_llm.py \
     --data YOUR_EVAL_DATA \
-    --output OUTPUT_DIR \
+    --output output/results/ \
     --model ${MODEL} \
     --use_slow_tokenizer \
     --num_proc 20 \

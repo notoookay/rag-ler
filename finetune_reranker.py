@@ -286,18 +286,24 @@ def save_with_accelerate(accelerator, model, output_dir):
 def tokenize_func(example, tokenizer, max_length):
     input_ids = []
     attention_mask = []
-    token_type_ids = []
+    
+    # RoBERTa doesn't use token_type_ids
+    if not (isinstance(tokenizer, transformers.XLMRobertaTokenizer) or isinstance(tokenizer, transformers.RobertaTokenizer)):
+        token_type_ids = []
     input = example['input']
     ctxs = example['ctxs']
     for ctx in ctxs:
         tokenized = tokenizer(input, ctx, truncation=True, max_length=max_length)
         input_ids.append(tokenized['input_ids'])
         attention_mask.append(tokenized['attention_mask'])
-        token_type_ids.append(tokenized['token_type_ids'])
-    
-    return {'input_ids': input_ids,
-            'attention_mask': attention_mask,
-            'token_type_ids': token_type_ids,}
+        if token_type_ids is not None:
+            token_type_ids.append(tokenized['token_type_ids'])
+
+    inputs = {"input_ids": input_ids, "attention_mask": attention_mask}
+    if token_type_ids is not None:
+        inputs["token_type_ids"] = token_type_ids
+
+    return inputs
 
 def main():
     args = parse_args()
@@ -453,9 +459,13 @@ def main():
         else:
             pad_to_multiple_of = None
 
-        tokenize_input = {'input_ids': [],
-                          'attention_mask': [],
-                          'token_type_ids': []}
+        if examples[0].get('token_type_ids') is not None:
+            tokenize_input = {'input_ids': [],
+                              'attention_mask': [],
+                              'token_type_ids': []}
+        else:
+            tokenize_input = {'input_ids': [],
+                              'attention_mask': []}
         
         log_prob_lsrs = []
         for example in examples:
@@ -688,7 +698,7 @@ def main():
                 f"{args.experiment_name}__{args.model_name_or_path.replace('/', '_')}__{args.seed}__{int(time.time())}"
             )
         args.hf_repo_url = f"https://huggingface.co/{args.hf_repo_id}/tree/{args.hf_repo_revision}"
-        push_folder_to_hub(accelerator, args.output_dir, args.hf_repo_id, args.hf_repo_revision, private=args.private)
+        push_folder_to_hub(accelerator, args.output_dir, args.hf_repo_id, args.hf_repo_revision)
 
 
 if __name__ == "__main__":
