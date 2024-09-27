@@ -421,6 +421,7 @@ def main():
     if args.model_name_or_path:
         model = AutoModelForSequenceClassification.from_pretrained(
             args.model_name_or_path,
+            torch_dtype='auto',
             return_dict=True,
         )
     else:

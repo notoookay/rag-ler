@@ -214,6 +214,12 @@ def parse_args():
         "--model",
         type=str)
     parser.add_argument(
+        "--model_revision",
+        type=str,
+        help="The specific model version to use (can be a branch name, tag name or commit id).",
+        default="main"
+    )
+    parser.add_argument(
         "--tokenizer",
         type=str)
     parser.add_argument(
@@ -317,6 +323,12 @@ def parse_args():
         help="set True when rerank is True"
     )
     parser.add_argument(
+        "--reranker_revision",
+        type=str,
+        help="The specific model version to use (can be a branch name, tag name or commit id).",
+        default="main"
+    )
+    parser.add_argument(
         "--evaluate",
         action="store_true",
         help="Whether to evaluate the generated answers"
@@ -399,7 +411,9 @@ def main():
             num_proc=args.num_proc,
         )
         if args.rerank:
-            rerank_model = AutoModelForSequenceClassification.from_pretrained(args.rerank_model).to('cuda')
+            rerank_model = AutoModelForSequenceClassification.from_pretrained(
+                args.rerank_model,
+                revision=args.reranker_revision).to('cuda')
             if not args.rerank_tokenizer:
                 args.rerank_tokenizer = args.rerank_model
             rerank_tokenizer = AutoTokenizer.from_pretrained(args.rerank_tokenizer)
