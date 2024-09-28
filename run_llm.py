@@ -38,8 +38,8 @@ from utils import (
 )
 
 ###################### For LLM ranking ######################
-from llmrankers.setwise import SetwiseLlmRanker
-from llmrankers.rankers import SearchResult
+# from llmrankers.setwise import SetwiseLlmRanker
+# from llmrankers.rankers import SearchResult
 ###################### For LLM ranking ######################
 
 # TODO: delete this
@@ -138,34 +138,34 @@ def rerank_contexts(example, model, tokenizer):
 
     ############################### For LLM ranking ################################
 
-    docs = [SearchResult(docid=i, text=example['transformed_ctxs'][i], score=None) for i in range(len(example['transformed_ctxs']))]
-    ranker = SetwiseLlmRanker(
-        model_name_or_path="google/flan-t5-large",
-        tokenizer_name_or_path="google/flan-t5-large",
-        device="cuda",
-        num_child=10,
-        scoring="generation",
-        method="heapsort",
-        k=10,
-    )
-    res_rank = ranker.rank(example['input'], docs) # List[SearchResult]
-    sorted_ctxs = [example['ctxs'][res.docid] for res in res_rank]
-    sorted_transformed_ctxs = [example['transformed_ctxs'][res.docid] for res in res_rank]
+    # docs = [SearchResult(docid=i, text=example['transformed_ctxs'][i], score=None) for i in range(len(example['transformed_ctxs']))]
+    # ranker = SetwiseLlmRanker(
+    #     model_name_or_path="google/flan-t5-large",
+    #     tokenizer_name_or_path="google/flan-t5-large",
+    #     device="cuda",
+    #     num_child=10,
+    #     scoring="generation",
+    #     method="heapsort",
+    #     k=10,
+    # )
+    # res_rank = ranker.rerank(example['input'], docs) # List[SearchResult]
+    # sorted_ctxs = [example['ctxs'][res.docid] for res in res_rank]
+    # sorted_transformed_ctxs = [example['transformed_ctxs'][res.docid] for res in res_rank]
 
     ############################### For LLM ranking ################################
 
     ############################### For cross-encoder ranking ################################
-    # inputs = [example['input']] * len(example['transformed_ctxs'])
-    # inputs = tokenizer(inputs, example['transformed_ctxs'], padding=True, truncation=True, return_tensors='pt').to(model.device)
+    inputs = [example['input']] * len(example['transformed_ctxs'])
+    inputs = tokenizer(inputs, example['transformed_ctxs'], padding=True, truncation=True, return_tensors='pt').to(model.device)
 
-    # model.eval()
-    # with torch.no_grad():
-    #     scores = model(**inputs).logits
+    model.eval()
+    with torch.no_grad():
+        scores = model(**inputs).logits
 
-    # scores = scores.squeeze()
-    # sorted_scores, indices = torch.sort(scores, descending=True)
-    # sorted_ctxs = [example['ctxs'][i] for i in indices]
-    # sorted_transformed_ctxs = [example['transformed_ctxs'][i] for i in indices]
+    scores = scores.squeeze()
+    sorted_scores, indices = torch.sort(scores, descending=True)
+    sorted_ctxs = [example['ctxs'][i] for i in indices]
+    sorted_transformed_ctxs = [example['transformed_ctxs'][i] for i in indices]
     ############################### For cross-encoder ranking ################################
 
     return {"ctxs": sorted_ctxs, "transformed_ctxs": sorted_transformed_ctxs}
