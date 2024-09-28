@@ -439,6 +439,7 @@ def main():
         if args.rerank:
             rerank_model = AutoModelForSequenceClassification.from_pretrained(
                 args.rerank_model,
+                torch_dtype='auto',
                 revision=args.reranker_revision).to('cuda')
             if not args.rerank_tokenizer:
                 args.rerank_tokenizer = args.rerank_model

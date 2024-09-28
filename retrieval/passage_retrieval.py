@@ -157,7 +157,8 @@ def validate(data, workers_num):
     message = ""
     for k in [5, 10, 20, 100]:
         if k <= len(top_k_hits):
-            message += f"R@{k}: {top_k_hits[k-1]} "
+            recall = 100 * top_k_hits[k-1]
+            message += f"R@{k}: {recall:.1f} "
     print(message)
     return match_stats.questions_doc_hits
 
