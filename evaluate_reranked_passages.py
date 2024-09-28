@@ -8,7 +8,7 @@ from argparse import ArgumentParser
 
 def parse_args():
     parser = ArgumentParser()
-    parser.add_argument("--data", type=str, required=True, help="Path to the data file")
+    parser.add_argument("--data", type=str, required=True, help="Path to the data files")
 
     return parser.parse_args()
 
@@ -61,7 +61,7 @@ def evaluate_rankings(data, k_values, logger):
     
     for item in data:
         query_id = item['id']
-        passages = list(item['ctxs'].values())
+        passages = list(item['ctxs'])
         # Use the index of each passage as its rank
         relevances = [1 if passage['hasanswer'] else 0 for passage in passages]
         query_relevances[query_id] = relevances
@@ -90,6 +90,9 @@ def load_data(data_path):
             for k, example in enumerate(fin):
                 example = json.loads(example)
                 data.append(example)
+    else:
+        raise ValueError("Data file must be in JSON or JSONL format")
+    
     return data
 
 def main(args):
@@ -100,6 +103,7 @@ def main(args):
 
     # Load data
     data_paths = glob.glob(args.data)
+    logger.info(f"Number of data files: {len(data_paths)}")
     for data_file in data_paths:
         logger.info(f"Data file: {data_file}")
         try:
