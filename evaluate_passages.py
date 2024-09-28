@@ -6,9 +6,42 @@ import json
 import glob
 from argparse import ArgumentParser
 
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+from functools import partial
+import torch
+
+from utils import save_file_jsonl
+
 def parse_args():
     parser = ArgumentParser()
     parser.add_argument("--data", type=str, required=True, help="Path to the data files")
+    parser.add_argument(
+        "--rerank",
+        action="store_true",
+        help="Whether to rerank passages using reranker, this will keep the evaluation of both the original and reranked passages",
+    )
+    parser.add_argument(
+        "--rerank_model",
+        type=str,
+        help="Path to the reranker model if reranking is enabled",
+    )
+    parser.add_argument(
+        "--rerank_tokenizer",
+        type=str,
+        help="set True when rerank is True"
+    )
+    parser.add_argument(
+        "--reranker_revision",
+        type=str,
+        help="The specific model version to use (can be a branch name, tag name or commit id).",
+        default="main"
+    )
+    parser.add_argument(
+        "--ctxs_num",
+        type=int,
+        default=0,
+        help="Number of contexts to use for evaluation. If 0, use all contexts."
+    )
 
     return parser.parse_args()
 
@@ -28,6 +61,35 @@ def setup_logger(log_file):
     logger.addHandler(console_handler)
     
     return logger
+
+def convert_ctxs(data):
+    for item in data:
+        ctxs = list(item['ctxs'])
+        transformed_ctx = [f"(Title: {ctx['title']}) {ctx['text']}" for ctx in ctxs]
+        item['transformed_ctxs'] = transformed_ctx
+
+    return data
+
+def rerank_contexts(data, model, tokenizer):
+
+    for item in data:
+        inputs = [item['input']] * len(item['transformed_ctxs'])
+        # Align with how model trained, use transformed_ctxs as re-ranking passages
+        inputs = tokenizer(inputs, item['transformed_ctxs'], padding=True, truncation=True, return_tensors='pt').to(model.device)
+
+        model.eval()
+        with torch.no_grad():
+            scores = model(**inputs).logits
+
+        scores = scores.squeeze()
+        sorted_scores, indices = torch.sort(scores, descending=True)
+        sorted_ctxs = [item['ctxs'][i] for i in indices]
+        sorted_transformed_ctxs = [item['transformed_ctxs'][i] for i in indices]
+
+        item['ctxs'] = sorted_ctxs
+        item['transformed_ctxs'] = sorted_transformed_ctxs
+    
+    return data
 
 def mean_reciprocal_rank_at_k(query_relevances, k):
     """Calculate Mean Reciprocal Rank at K (MRR@K)."""
@@ -122,6 +184,32 @@ def main(args):
         logger.info(f"K values being evaluated: {k_values}")
 
         results = evaluate_rankings(data, k_values, logger)
+
+        if args.rerank:
+            logger.info("Reranking passages")
+            rerank_model = AutoModelForSequenceClassification.from_pretrained(
+                args.rerank_model,
+                torch_dtype='auto',
+                revision=args.reranker_revision).to('cuda')
+            if not args.rerank_tokenizer:
+                args.rerank_tokenizer = args.rerank_model
+            rerank_tokenizer = AutoTokenizer.from_pretrained(
+                args.rerank_tokenizer,
+                revision=args.reranker_revision,
+            )
+            rerank_contexts(data, rerank_model, rerank_tokenizer)
+
+            # store the reranked data
+            logger.info("Saving reranked data")
+            save_file_jsonl(
+                data,
+                data_file.replace(
+                    ".json", f"_reranked_{args.rerank_model.replace('/', '_')}.jsonl"
+                ),
+            )
+
+            logger.info("Re-evaluating rankings after reranking")
+            reranked_results = evaluate_rankings(data, k_values, logger)
 
     logger.info("Evaluation complete")
 
