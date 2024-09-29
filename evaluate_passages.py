@@ -177,7 +177,7 @@ def main(args):
             logger.error(f"Invalid JSON in data file: {data_file}")
             return
 
-        k_values = [5, 10, 20]  # Adjust as needed
+        k_values = [1, 3, 5, 10, 20]  # Adjust as needed
 
         logger.info("Starting ranking evaluation")
         logger.info(f"Number of queries: {len(data)}")
@@ -205,7 +205,7 @@ def main(args):
             save_file_jsonl(
                 data,
                 data_file.replace(
-                    ".json", f"_reranked_{args.rerank_model.replace('/', '_')}.jsonl"
+                    ".jsonl", f"_reranked_{args.rerank_model.replace('/', '_')}.jsonl"
                 ),
             )
 
