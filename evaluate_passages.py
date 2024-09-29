@@ -165,10 +165,9 @@ def load_data(data_path):
 
 def main(args):
     # Set up logging
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     if not os.path.exists(args.output):
         os.makedirs(args.output, exist_ok=True)
-    log_file = f"{args.output}/ranking_evaluation_{timestamp}.log"
+    log_file = f"{args.output}/ranking_evaluation_{args.rerank_model.replace('/', '_')}.log"
     logger = setup_logger(log_file)
 
     # Load data
