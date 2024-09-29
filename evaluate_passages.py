@@ -167,7 +167,7 @@ def main(args):
     # Set up logging
     if not os.path.exists(args.output):
         os.makedirs(args.output, exist_ok=True)
-    log_file = f"{args.output}/ranking_evaluation_{args.rerank_model.replace('/', '_')}_{args.ctxs_num}.log"
+    log_file = f"{args.output}/ranking_evaluation_{args.rerank_model.replace('/', '_')}_{args.reranker_revision}_{args.ctxs_num}.log"
     logger = setup_logger(log_file)
 
     # Load data
