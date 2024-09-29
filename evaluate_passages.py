@@ -5,6 +5,7 @@ from datetime import datetime
 import json
 import glob
 from argparse import ArgumentParser
+import os
 
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from functools import partial
@@ -165,7 +166,7 @@ def load_data(data_path):
 def main(args):
     # Set up logging
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_file = f"ranking_evaluation_{timestamp}.log"
+    log_file = f"{args.output}/ranking_evaluation_{timestamp}.log"
     logger = setup_logger(log_file)
 
     # Load data
@@ -210,15 +211,23 @@ def main(args):
             convert_ctxs(data)
             rerank_contexts(data, rerank_model, rerank_tokenizer)
 
-            # store the reranked data
-            logger.info("Saving reranked data")
-            save_file_jsonl(
-                data,
-                f"{args.output}_{args.rerank_model.replace('/', '_')}_reranked/{data_file.split('/')[-1]}"
-            )
-
             logger.info("Re-evaluating rankings after reranking")
             reranked_results = evaluate_rankings(data, k_values, logger)
+
+            # store the reranked data
+            logger.info("Saving reranked data")
+
+            # remove transformed_ctxs before saving
+            for item in data:
+                del item['transformed_ctxs']
+
+            output_file = f"{args.output}/{args.rerank_model.replace('/', '_')}_reranked/{data_file.split('/')[-1]}"
+            if not os.path.exists(output_file):
+                os.makedirs(output_file, exist_ok=True)
+            save_file_jsonl(
+                data,
+                output_file
+            )
 
     logger.info("Evaluation complete")
 
