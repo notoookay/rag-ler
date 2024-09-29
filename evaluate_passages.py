@@ -9,6 +9,7 @@ from argparse import ArgumentParser
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from functools import partial
 import torch
+from tqdm import tqdm
 
 from utils import save_file_jsonl
 
@@ -63,7 +64,7 @@ def setup_logger(log_file):
     return logger
 
 def convert_ctxs(data):
-    for item in data:
+    for item in tqdm(data, desc="Converting contexts"):
         ctxs = list(item['ctxs'])
         transformed_ctx = [f"(Title: {ctx['title']}) {ctx['text']}" for ctx in ctxs]
         item['transformed_ctxs'] = transformed_ctx
@@ -72,7 +73,7 @@ def convert_ctxs(data):
 
 def rerank_contexts(data, model, tokenizer):
 
-    for item in data:
+    for item in tqdm(data, desc="Reranking"):
         inputs = [item['input']] * len(item['transformed_ctxs'])
         # Align with how model trained, use transformed_ctxs as re-ranking passages
         inputs = tokenizer(inputs, item['transformed_ctxs'], padding=True, truncation=True, return_tensors='pt').to(model.device)
