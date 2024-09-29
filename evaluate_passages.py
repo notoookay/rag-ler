@@ -196,6 +196,7 @@ def main(args):
                 args.rerank_tokenizer,
                 revision=args.reranker_revision,
             )
+            convert_ctxs(data)
             rerank_contexts(data, rerank_model, rerank_tokenizer)
 
             # store the reranked data
