@@ -173,6 +173,7 @@ def main(args):
     # Load data
     data_paths = glob.glob(args.data)
     logger.info(f"Number of data files: {len(data_paths)}")
+    logger.info(f"Using re-ranker model: {args.rerank_model}_{args.reranker_revision}")
     for data_file in data_paths:
         logger.info(f"Data file: {data_file}")
         try:
@@ -222,7 +223,7 @@ def main(args):
             for item in data:
                 del item['transformed_ctxs']
 
-            output_file = f"{args.output}/{args.rerank_model.replace('/', '_')}_reranked/"
+            output_file = f"{args.output}/{args.rerank_model.replace('/', '_')}_{args.reranker_revision}_reranked/"
             if not os.path.exists(output_file):
                 os.makedirs(output_file, exist_ok=True)
             save_file_jsonl(
