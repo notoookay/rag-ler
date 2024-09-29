@@ -43,6 +43,11 @@ def parse_args():
         default=0,
         help="Number of contexts to use for evaluation. If 0, use all contexts."
     )
+    parser.add_argument(
+        "--output",
+        type=str,
+        help="Path to save the evaluation results",
+    )
 
     return parser.parse_args()
 
@@ -183,6 +188,11 @@ def main(args):
         logger.info(f"Number of queries: {len(data)}")
         logger.info(f"K values being evaluated: {k_values}")
 
+        if args.ctxs_num:
+            logger.info(f"Using only the first {args.ctxs_num} contexts for evaluation")
+            for item in data:
+                item['ctxs'] = item['ctxs'][:args.ctxs_num]
+
         results = evaluate_rankings(data, k_values, logger)
 
         if args.rerank:
@@ -204,9 +214,7 @@ def main(args):
             logger.info("Saving reranked data")
             save_file_jsonl(
                 data,
-                data_file.replace(
-                    ".jsonl", f"_reranked_{args.rerank_model.replace('/', '_')}.jsonl"
-                ),
+                f"{args.output}_{args.rerank_model.replace('/', '_')}_reranked/{data_file.split('/')[-1]}"
             )
 
             logger.info("Re-evaluating rankings after reranking")
