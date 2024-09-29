@@ -94,51 +94,50 @@ def rerank_contexts(data, model, tokenizer):
 def mean_reciprocal_rank_at_k(query_relevances, k):
     """Calculate Mean Reciprocal Rank at K (MRR@K)."""
     reciprocal_ranks = []
-    for relevances in query_relevances.values():
+    for relevances in query_relevances:
         relevances_at_k = relevances[:k]
         try:
             rank = relevances_at_k.index(1) + 1
             reciprocal_ranks.append(1.0 / rank)
         except ValueError:
             reciprocal_ranks.append(0)
-    
+
     return np.mean(reciprocal_ranks)
 
-def recall_at_k(query_relevances, k):
+def top_k_hits_recall_at_k(query_relevances, k):
     """Calculate Recall at K."""
     recalls = []
-    for relevances in query_relevances.values():
+    for relevances in query_relevances:
         total_relevant = sum(relevances)
         if total_relevant == 0:
-            recalls.append(1.0)  # If no relevant items, consider it perfect recall
+            recalls.append(0.0)
         else:
-            relevant_at_k = sum(relevances[:k])
-            recalls.append(relevant_at_k / total_relevant)
-    
+            relevant_at_k = 1 if sum(relevances[:k]) else 0
+            recalls.append(relevant_at_k)
+
     return np.mean(recalls)
 
 def evaluate_rankings(data, k_values, logger):
-    """Evaluate rankings using MRR@K and Recall@K for multiple K values."""
-    query_relevances = defaultdict(list)
+    """Evaluate rankings using MRR@K and R@K for multiple K values."""
+    query_relevances = list()
     
     for item in data:
-        query_id = item['id']
         passages = list(item['ctxs'])
         # Use the index of each passage as its rank
         relevances = [1 if passage['hasanswer'] else 0 for passage in passages]
-        query_relevances[query_id] = relevances
+        query_relevances.append(relevances)
 
     results = {}
     for k in k_values:
         mrr_k = mean_reciprocal_rank_at_k(query_relevances, k)
-        recall_k = recall_at_k(query_relevances, k)
+        recall_k = top_k_hits_recall_at_k(query_relevances, k)
         results[k] = {
             'MRR@K': mrr_k,
-            'Recall@K': recall_k
+            'R@K': recall_k
         }
         logger.info(f"K = {k}")
         logger.info(f"  MRR@{k}: {mrr_k:.3f}")
-        logger.info(f"  Recall@{k}: {recall_k:.3f}")
+        logger.info(f"  R@{k}: {recall_k:.3f}")
     
     return results
 
