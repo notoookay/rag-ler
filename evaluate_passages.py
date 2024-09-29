@@ -166,6 +166,8 @@ def load_data(data_path):
 def main(args):
     # Set up logging
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    if not os.path.exists(args.output):
+        os.makedirs(args.output, exist_ok=True)
     log_file = f"{args.output}/ranking_evaluation_{timestamp}.log"
     logger = setup_logger(log_file)
 
@@ -221,12 +223,12 @@ def main(args):
             for item in data:
                 del item['transformed_ctxs']
 
-            output_file = f"{args.output}/{args.rerank_model.replace('/', '_')}_reranked/{data_file.split('/')[-1]}"
+            output_file = f"{args.output}/{args.rerank_model.replace('/', '_')}_reranked"
             if not os.path.exists(output_file):
                 os.makedirs(output_file, exist_ok=True)
             save_file_jsonl(
                 data,
-                output_file
+                output_file + f"{data_file.split('/')[-1]}"
             )
 
     logger.info("Evaluation complete")
