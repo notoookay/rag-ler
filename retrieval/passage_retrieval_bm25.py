@@ -78,7 +78,7 @@ def main(args):
     # load passages
     print("loading passages")
     passages = load_passages(args.passages)
-    passage_id_map = {x["id"]: x for x in passages}
+    passage_id_map = {str(x["id"]): x for x in passages}
     print("passages have been loaded")
 
     searcher = LuceneSearcher(args.passages_indexes)
