@@ -1,8 +1,6 @@
-<!-- This version is for review -->
+## RAG-LER: Retrieval Augmented Generation with LM-Enhanced Reranker
 
-## RAG-LER: Retrieval Augmented Generation with LM-Enhanced Reranker (Review version)
-
-This repo includes the implementation of **RAG-LER: Retrieval Augmented Generation with LM-Enhanced Reranker**.
+This repo includes the implementation of our paper **RAG-LER: Retrieval Augmented Generation with LM-Enhanced Reranker**.
 
 ![RAG-LER](img/RAG-LER.png)
 
@@ -28,8 +26,6 @@ Installation can be done by running the command:
 ```bash
 source setup.sh
 ```
-
-If the command above doesn't work, you can copy and run commands in `setup.sh` manually.
 
 We use [mlflow](https://mlflow.org) for our experiment recording. Typically you don't need to modify the settings. During running an experiment, you can check the result:
 
@@ -59,7 +55,7 @@ bash ./scripts/finetune_llm.sh
 
 Feel free to modify the settings in this script for custom test.
 
-Our [7B](https://huggingface.co/notoookay/ragler-llama2-7b) and [13B](https://huggingface.co/notoookay/ragler-llama2-13b) are available on HuggingFace in case you want to use directly.
+Our [7B](https://huggingface.co/notoookay/ragler-llama2-7b) and [13B](https://huggingface.co/notoookay/ragler-llama2-13b) models are available on HuggingFace in case you want to use directly.
 
 For quick start, you can use trained LM:
 
@@ -67,8 +63,8 @@ For quick start, you can use trained LM:
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 
-tokenizer = AutoTokenizer.from_pretrained("YOUR_MODEL_PATH")
-model = AutoModelForCausalLM.from_pretrained("YOUR_MODEL_PATH", torch_dtype=torch.bfloat16, device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("notoookay/ragler-llama2-7b")
+model = AutoModelForCausalLM.from_pretrained("notoookay/ragler-llama2-7b", torch_dtype=torch.bfloat16, device_map="auto")
 
 # Example usage
 input_text = "### Instruction:\nAnswer the following question.\n\n### Input:\nQuestion:\nWhat is the capital of France?\n\n### Response:\n"
@@ -95,7 +91,7 @@ As re-ranker training is supervised by LM, we need to get training label (probab
 bash ./scripts/prepare_reranker_train_data.sh
 ```
 
-Mistral-7b model uses lower memory (about 40GB), so you may reduce inference cost when testing on Mistral model.
+Mistral-7b model uses less memory (about 40GB), so you may reduce inference cost when testing on Mistral model.
 
 You can also use data provided by us, which can be found in `data/reranker_train_labels_llama2_7b.jsonl`. We inference our fine-tuned LLMs using the same configuration in the script above.
 
