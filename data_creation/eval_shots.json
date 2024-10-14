@@ -95,70 +95,6 @@
             "context": "Document 1: (Title: Nobody's Baby (1937 film))  Nobody's Baby is a 1937 American comedy film directed by Gus Meins and written by Harold Law, Hal Yates and Pat C. Flick. The film stars Patsy Kelly, Lyda Roberti, Lynne Overman, Robert Armstrong, Rosina Lawrence, and Don Alvarado. The film was released on April 23, 1937 by Metro-Goldwyn-Mayer."
         }
     ],
-    "zsre": [
-        {
-            "id": "6c1b2750-cf4b-4f55-afc2-bbda9e546eae",
-            "input": "The Kid Comes Back [SEP] director",
-            "output": "B. Reeves Eason",
-            "context": "Document 1: (Title: The Kid Comes Back)  The Kid Comes Back is a 1938 prizefight film directed by B. Reeves Eason and starring Wayne Morris, Barton MacLane, June Travis and \"Slapsie Maxie\" Rosenbloom. The title may be meant to remind audiences of Kid Galahad, a smash hit prizefight movie released the previous year starring Edward G. Robinson, Bette Davis, Humphrey Bogart, and Wayne Morris in the title role as a young boxer very similar to his part in The Kid Comes Back."
-        },
-        {
-            "id": "bd88d211-93a6-496d-a431-6b4ba14c2807",
-            "input": "Prince Nikita Alexandrovich of Russia [SEP] mother",
-            "output": "Grand Duchess Xenia Alexandrovna of Russia",
-            "context": "Document 1: (Title: Prince Nikita Alexandrovich of Russia)  Prince Nikita Alexandrovich of Russia (17 January [ O.S. 4 January] 1900 \u2013 12 September 1974) was the third son and fourth child of Grand Duke Alexander Mikhailovich of Russia and Grand Duchess Xenia Alexandrovna of Russia. He was a nephew of Tsar Nicholas II of Russia. Born in Imperial Russia during the reign of his uncle, Prince Nikita escaped the fate of many of his relatives who were killed by the Bolsheviks. He left Russia in April 1919, at age nineteen. In 1922, he married Countess Maria Vorontsova-Dashkova. The couple had two children."
-        },
-        {
-            "id": "26047db7-b88f-461e-a355-7f729ca7236a",
-            "input": "Namjilyn Norovbanzad [SEP] occupation",
-            "output": "singer",
-            "context": "Document 1: (Title: Namjilyn Norovbanzad) Urtiin Duu, Rough Trade Records 1996 "
-        },
-        {
-            "id": "d74a0a31-cbc6-4866-98bb-b834c21d3d99",
-            "input": "Covies [SEP] country of origin",
-            "output": "Ireland",
-            "context": "Document 1: (Title: Covies)  Covies is an Irish series of web-based drama short films created by Len Collin and is an online soap set in Westport, Ireland."
-        },
-        {
-            "id": "c9cb1695-6d60-4d1e-8130-7e85cdd5a8a5",
-            "input": "3 Deewarein [SEP] cast member",
-            "output": "Nagesh Kukunoor",
-            "context": "Document 1: (Title: 3 Deewarein)  3 Deewarein is a 2003 Indian Hindi-language crime film written, directed and co-starred by Nagesh Kukunoor. Juhi Chawla, Jackidata.iloce Shroff, Naseeruddin Shah, Gulshan Grover and Sujata Mehta form the rest of the cast. The film narrates the story of three prisoners and a documentary filmmaker who, while filming their reformation story in the prison, finds redemption with her own troubled marriage. The film was showcased among the Indian panorama section, at the 2003 International Film Festival of India. The film was also premiered at the Kolkata Film Festival. After having been screened at the Indian Film Festival of Los Angeles, where it was well received, the film was screened at the Commonwealth Festival at Manchester, it was nominated as one of the top five films, at the gala presentation. Nagesh Kukunoor has also received the Filmfare Award for Best Story."
-        }
-    ],
-    "trex": [
-        {
-            "id": "61ac59ed-336c-41ce-a170-806b5007f9a9",
-            "input": "Sadeq Khalilian [SEP] occupation",
-            "output": "economist",
-            "context": "Document 1: (Title: Sadeq Khalilian)  Sadeq Khalilian (, born 1959) is an Iranian conservative politician who currently serves as the governor of Khuzestan Province, since September 2021.He is the former Agriculture Minister from 2009 to 2013 in the government headed by Mahmoud Ahmedinejad."
-        },
-        {
-            "id": "3fe5ce30-3ea9-4503-9b0b-98f9c32e7db4",
-            "input": "Connected: An Autoblogography About Love, Death & Technology [SEP] director",
-            "output": "Tiffany Shlain",
-            "context": "Document 1: (Title: Connected: An Autoblogography About Love, Death &amp; Technology)  Critical reception has been mixed. The film received positive reviews on the aggregator Rotten Tomatoes."
-        },
-        {
-            "id": "92b19ebe-b082-470e-9e89-697692040f44",
-            "input": "Gustave Le Gray [SEP] country of citizenship",
-            "output": "France",
-            "context": "Document 1: (Title: Gustave Le Gray)  Gustave Le Gray was born on 30 August 1820 in Villiers-le-Bel, Val-d'Oise. He was an only child, and his parents encouraged him to become a solicitor's clerk, but from a young age he aspired to be an artist. He was originally trained as a painter, studying under Fran\u00e7ois-\u00c9douard Picot and Paul Delaroche. His parents financed a trip to Switzerland and Italy so that he could study art abroad, and he lived in Italy between 1843-1846 and painted portraits and scenes of the countryside. In 1844, he met and married Palmira Maddalena Gertrude Leonardi (born 23 March 1823), a laundress who he had six children with, although "
-        },
-        {
-            "id": "3ced5f73-c813-4f4f-9ddf-0fb73f43332a",
-            "input": "Charleston [SEP] located in the administrative territorial entity",
-            "output": "Hopkins County",
-            "context": "Document 1: (Title: Charleston, South Carolina)  Charleston is the largest city in the U.S. state of South Carolina, the county seat of Charleston County, and the principal city in the Charleston\u2013North Charleston metropolitan area. The city lies just south of the geographical midpoint of South Carolina's coastline on Charleston Harbor, an inlet of the Atlantic Ocean formed by the confluence of the Ashley, Cooper, and Wando rivers. Charleston had a population of 150,277 as of the 2020 U.S. Census. The 2020 population of the Charleston metropolitan area, comprising Berkeley, Charleston, and Dorchester counties, was 799,636 residents, the third-largest in the state and the 74th-largest metropolitan statistical area in the United States. Charleston was founded in 1670 as Charles Town, honoring "
-        },
-        {
-            "id": "1ace2e2e-a28a-4d1c-affe-c9144bd6bb22",
-            "input": "Paranagama Mandandawela [SEP] country",
-            "output": "Sri Lanka",
-            "context": "Document 1: (Title: Paranagama Mandandawela)  Paranagama Mandandawela is a village in Sri Lanka. It is located within Central Province."
-        }
-    ],
     "trivia_qa": [
         {
             "id": "bb_7723",
@@ -189,38 +125,6 @@
             "input": "In the Patrick O'Brian novels about Jack Aubrey, who is his doctor companion?",
             "output": "STEPHEN MATURIN",
             "context": "Document 1: (Title: Patrick O'Brian)  Patrick O'Brian, CBE (12 December 1914 \u2013 2 January 2000), born Richard Patrick Russ, was an English novelist and translator, best known for his Aubrey\u2013Maturin series of sea novels set in the Royal Navy during the Napoleonic Wars, and centred on the friendship of the English naval captain Jack Aubrey and the Irish\u2013Catalan physician Stephen Maturin. The 20-novel series, the first of which is Master and Commander, is known for its well-researched and highly detailed portrayal of early 19th-century life, as well as its authentic and evocative language. A partially finished 21st novel in the series was published posthumously containing facing pages of handwriting and typescript. O'Brian wrote a number of other "
-        }
-    ],
-    "wow": [
-        {
-            "id": "533620cc-99d6-11ea-8a20-773209e30a7b_4",
-            "input": "Valedictorian is a title that's used in more then just the US, but I don't envy them that speech they make.\nto be honest i dont know much about Valedictorian could you tell me more about it?\nIt usuallly is the one with the highest grade point average (GPA) among the graduating class.\nthat is defenetly not me hahaha, what about you where you a Valedictorian in your class?\nNo, I did well but not that well. They give a speech as a final farewell to the classmates.\nYeah i have heard some of the speeches and they tend to be really good, people really work hard on them\nIn Australia they do it different- it's often based on contribution not just grades.\nthat is good beacuse not just the smartest one will give the speech other people will have a chance as well",
-            "output": "THey call them the dux which is latin for leader.",
-            "context": "Document 1: (Title: Valedictorian)  Valedictorian is an academic title of success used in the United States, Canada, Kuwait, Egypt, Philippines, and Greece (and elsewhere in a limited number of schools) for the student who delivers the closing or farewell statement at a graduation ceremony (called a valediction). The chosen valedictorian is traditionally the student with the highest academic standing among their graduating class, and that standing is commonly determined by a numerical formula for Grade Point Average (GPA), but other methods of selection are also in use. The term is an Anglicised derivation of the Latin vale dicere (\"to say farewell\"), historically rooted in the valedictorian's traditional role as the final speaker at the graduation ceremony before the students receive their diplomas. The "
-        },
-        {
-            "id": "91237ba0-99d6-11ea-8a20-773209e30a7b_2",
-            "input": "My favorite sport is hockey, do you know much about it?\ni love hockey! Such a fun sport to watch. Two teams of skaters use their sticks to shoot puck into the net, what could be better?\nAnd it is on ice. I always thought it might be dangerous to sit there and watch.\nyeah hockey it's very fast paced and physical but it's not dangerous if you're watching it because there is a glass that protecting people\nThe pucks never fly up into the stands? That is my biggest fear.",
-            "output": "i don't think so, i've never seen it :) i'm from russia, hockey is so popular there",
-            "context": "Document 1: (Title: Foot hockey)  to throw or place it on the ground, but only to themselves. In other words, the ball cannot be hand passed to another player, or thrown into the net. In organised events, helmets may be required, and is recommended by some. The game is considered to be a safe sport. One of the important rules is interference. If the goalie is kicked or pushed it is an interference and the team which was interfered is granted the ball and is no goal if it enters the net. There are also interferences during out of net play. The common playground interference is when people that aren't playing run into the way of the ball. The consequences differ "
-        },
-        {
-            "id": "6fe19f1c-99d6-11ea-8a20-773209e30a7b_1",
-            "input": "What do you know about classical music? I enjoy listening to the symphony in my hometown, but I am clueless about it.\nI believe Classical music is art music produced or rooted in the traditions of Western culture.It is very secular.\nIs it very secular? It seems like I have heard a lot of Christian based classical music.",
-            "output": "A more precise term is also used to refer to the period from 1750 to 1820.It is known as the Classical period.",
-            "context": "Document 1: (Title: Heavy metal music)  has stated that \"If done correctly, metal and classical fit quite well together. Classical and metal are probably the two genres that have the most in common when it comes to feel, texture, creativity.\" Although a number of metal musicians cite classical composers as inspiration, classical and metal are rooted in different cultural traditions and practices\u2014classical in the art music tradition, metal in the popular music tradition. As musicologists Nicolas Cook and Nicola Dibben note, \"Analyses of popular music also sometimes reveal the influence of 'art traditions'. An example is Walser's linkage of heavy metal music with the ideologies and even some of the performance practices of nineteenth-century Romanticism. However, it would be clearly wrong to claim that traditions such as blues, rock, heavy metal, rap or dance music derive primarily from \"art music'.\""
-        },
-        {
-            "id": "5b95d370-99d6-11ea-8a20-773209e30a7b_3",
-            "input": "Ive always wanted to be a journalist but really dont know too much about it, Can you tell me some things I should know about it? Like is it a hard job? \nI imagine it depends.  There are so many types:  print, radio, internet and tv\nIndeed there are, Do you happen to know the salary of a journalist? I imagine its a lot. \nAgain there are so many different types.  Journalism is basically just reporting on the facts and events\nTrue, I want to be a journalist but dont even know where to start, Do I have to go to college to be one? \nI imagine it would be helpful.  But the role of a journalist has changed a lot over the years, especiially with news on the internet\nYea todays journalism is mostly on the internet and many times on camera, not like the old pen and paper style. ",
-            "output": "YEs and in some countries, the media is controlled by the government",
-            "context": "Document 1: (Title: Glossary of journalism)  journalism: The production and distribution of reports on current events based on facts and supported with proof or evidence, practiced by professional or amateur. Common types of journalistic media include print, television, radio, and the Internet. journalist: jump line: A line of type at the bottom of an incomplete newspaper or magazine article which directs the reader to another page where the story is continued. The term may also refer to the line at the top of the continued article indicating the page from which it was continued, also called a. See also."
-        },
-        {
-            "id": "5a6f80ae-99d6-11ea-8a20-773209e30a7b_3",
-            "input": "vegetariasim originated and is from root of india and greece\nI see but why would anyone not eat meat?\nsome people dont like meat, and it irritates them and believe the animals are sacred\nI see. But how will they get their protein and amino acids\nsome started it because of the idea of non violence to animal, protein can be obtained also from plant such as almond milk, soy milk and all others, they eat peas also\nI see. but is it true vegan do not heal up fast once they get injured?",
-            "output": "yes because they dont eat meat, and most of the world population are made up of 4% vegan",
-            "context": "Document 1: (Title: Vegan nutrition)  Proteins are composed of amino acids. Vegans obtain all their protein from plants, omnivores usually a third, and ovo-lacto vegetarians half. Sources of plant protein include legumes such as soy beans (consumed as tofu, tempeh, textured vegetable protein, soy milk, and edamame), peas, peanuts, black beans, and chickpeas (the latter often eaten as hummus); grains such as quinoa, brown rice, corn, barley, bulgur, and wheat (the latter eaten as bread and seitan); and nuts and seeds. Combinations that contain high amounts of all the essential amino acids include rice and beans, corn and beans, and hummus and whole-wheat pita. In 2012, the United States Department of "
         }
     ],
     "arc_c": [
