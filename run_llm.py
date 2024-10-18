@@ -37,11 +37,6 @@ from utils import (
     SHOT_TEMPLATE_CONTEXT,
 )
 
-###################### For LLM ranking ######################
-# from llmrankers.setwise import SetwiseLlmRanker
-# from llmrankers.rankers import SearchResult
-###################### For LLM ranking ######################
-
 # TODO: delete this
 LLAMA2_CHAT_PROMPT_DICT = {
     "prompt_no_context": "[INST] {instruction}\n\nQuestion:\n{question} [/INST]",
@@ -136,25 +131,6 @@ def create_icl_prompt(example, use_context=False, ctxs_num=0, shots_num=5):
 
 def rerank_contexts(example, model, tokenizer):
 
-    ############################### For LLM ranking ################################
-
-    # docs = [SearchResult(docid=i, text=example['transformed_ctxs'][i], score=None) for i in range(len(example['transformed_ctxs']))]
-    # ranker = SetwiseLlmRanker(
-    #     model_name_or_path="google/flan-t5-large",
-    #     tokenizer_name_or_path="google/flan-t5-large",
-    #     device="cuda",
-    #     num_child=10,
-    #     scoring="generation",
-    #     method="heapsort",
-    #     k=10,
-    # )
-    # res_rank = ranker.rerank(example['input'], docs) # List[SearchResult]
-    # sorted_ctxs = [example['ctxs'][res.docid] for res in res_rank]
-    # sorted_transformed_ctxs = [example['transformed_ctxs'][res.docid] for res in res_rank]
-
-    ############################### For LLM ranking ################################
-
-    ############################### For cross-encoder ranking ################################
     inputs = [example['input']] * len(example['transformed_ctxs'])
     inputs = tokenizer(inputs, example['transformed_ctxs'], padding=True, truncation=True, return_tensors='pt').to(model.device)
 
@@ -166,7 +142,6 @@ def rerank_contexts(example, model, tokenizer):
     sorted_scores, indices = torch.sort(scores, descending=True)
     sorted_ctxs = [example['ctxs'][i] for i in indices]
     sorted_transformed_ctxs = [example['transformed_ctxs'][i] for i in indices]
-    ############################### For cross-encoder ranking ################################
 
     return {"ctxs": sorted_ctxs, "transformed_ctxs": sorted_transformed_ctxs}
 
