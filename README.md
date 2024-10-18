@@ -16,6 +16,7 @@ We introduce **RAG-LER**, a novel framework that enhances an LM’s context unde
 - [Retrieval](#retrieval)
 - [Evaluation](#evaluation)
 - [Contributing](#contributing)
+- [Citation](#citation)
 
 <!-- Add Citation -->
 
@@ -24,6 +25,10 @@ We introduce **RAG-LER**, a novel framework that enhances an LM’s context unde
 Installation can be done by running the command:
 
 ```bash
+# Clone the repo
+git clone https://github.com/notoookay/rag-ler.git
+
+cd rag-ler
 source setup.sh
 ```
 
@@ -153,6 +158,9 @@ bash ./scripts/run_llm.sh
 ```
 
 **Note:** Remember to modify the arguments you use, for more specific details of arguments, please refer to our paper.
+
+## Citation
+Under review, coming soon.
 
 ## Contributing
 
