@@ -22,7 +22,7 @@ termcolor
 jsonlines
 unidic-lite
 einops
-# directly insstall flash-attn will be interupted, install after requirements.txt
+# directly install flash-attn will be interupted, need to install pytorch first
 # flash-attn==2.5.8
 auto-gptq
 fire
