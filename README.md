@@ -1,6 +1,6 @@
-# RAG-LER: Retrieval Augmented Generation with LM-Enhanced Reranker
+# RAG-LER: Ranking Adapted Generation with Language-Model Enabled Regulation
 
-This repo includes the implementation of our paper **RAG-LER: Retrieval Augmented Generation with LM-Enhanced Reranker**.
+This repo includes the implementation of our paper **RAG-LER: Ranking Adapted Generation with Language-Model Enabled Regulation**.
 
 ![RAG-LER](img/RAG-LER.png)
 
