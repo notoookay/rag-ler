@@ -127,6 +127,70 @@
             "context": "Document 1: (Title: Patrick O'Brian)  Patrick O'Brian, CBE (12 December 1914 \u2013 2 January 2000), born Richard Patrick Russ, was an English novelist and translator, best known for his Aubrey\u2013Maturin series of sea novels set in the Royal Navy during the Napoleonic Wars, and centred on the friendship of the English naval captain Jack Aubrey and the Irish\u2013Catalan physician Stephen Maturin. The 20-novel series, the first of which is Master and Commander, is known for its well-researched and highly detailed portrayal of early 19th-century life, as well as its authentic and evocative language. A partially finished 21st novel in the series was published posthumously containing facing pages of handwriting and typescript. O'Brian wrote a number of other "
         }
     ],
+    "popqa":[
+        {
+            "id": "popqa_1593572",
+            "input": "Who was the screenwriter for Hard to Get?",
+            "output": "Jerry Wald",
+            "context": "Document 1: (Title: Hard to Get (1938 film))  Hard to Get is a 1938 American romantic comedy film starring Dick Powell and Olivia de Havilland. Written by Jerry Wald, Maurice Leo, and Richard Macaulay, and directed by Ray Enright, the film is about a spoiled young heiress who tries to charge some gasoline at an auto court and is forced by the attendant to work out her bill by making beds and cleaning rooms. Resolving to get even, she pretends to have forgiven him, and then sends him to her father to get financing for his plan to develop a string of auto courts across the country, knowing he will only be wasting his time. Hard to Get was released by Warner Bros. Pictures in the United States on November 5, 1938."
+        },
+        {
+            "id": "popqa_248683",
+            "input": "Who was the composer of Paradise?",
+            "output": "Paul Matthew Hoffert",
+            "context": "Document 1: (Title: The Paradise (TV series))  A soundtrack, featuring music by composer Maurizio Malagnini from the series, was released by Silva Screen Records on 26 August 2013. The music was performed by the BBC Concert Orchestra and recorded at Air Studios, Lyndhurst Hall, London, UK. The score won a Music + Sound Award 2013."
+        },
+        {
+            "id": "popqa_1361227",
+            "input": "Who was the screenwriter for Thanksgiving?",
+            "output": "Russel Friend",
+            "context": "Document 1: (Title: List of films set around Thanksgiving)  film directed by Steve Rash ; The Star-Crossed Romance of Josephine Cosnowski, a 1985 television film written by Jean Shepherd and directed by Fred Barzyk ; Starting Over, a 1979 film directed by Alan J. Pakula ; Sweet Hearts Dance, a 1988 film directed by Robert Greenwald ; Tadpole, a 2002 American film directed by Gary Winick ; Thanksgiving, a 2014 film directed by Adam Newport-Berra ; Thanksgiving Day, a 1990 television film directed by Gino Tanasescu ; Tower Heist, a 2011 film directed by Brett Ratner ; What's Cooking?, a 2000 Britsh American comedy-drama film directed by Gurinder Chadha ; You've Got Mail, a 1998 romantic comedy film starring Tom Hanks and Meg Ryan "
+        },
+        {
+            "id": "popqa_192850",
+            "input": "Who was the screenwriter for Most?",
+            "output": "William Zabka",
+            "context": "Document 1: (Title: Preston Sturges)  Jesse Lasky had been prepared to customarily pass Sturges' screenplay along to other writers for rewriting, but said, \"It was the most perfect script I'd ever seen ... Imagine a producer accepting a script from an author and not being able to make one change.\" Lasky paid Sturges $17,500 plus 7% of the profits above $1 million. It was a then-unprecedented deal for a screenwriter, which instantly elevated Sturges' reputation in Hollywood – although the lucrative deal irritated as many as it impressed. Sturges later recalled, \"The film made a lot of enemies. Writers at that time worked in teams, "
+        },
+        {
+            "id": "popqa_4982389",
+            "input": "What genre is Hollow?",
+            "output": "heavy metal music",
+            "context": "Document 1: (Title: Hollow (Pantera song))  \"Hollow\" is a power ballad by American heavy metal band Pantera from their 1992 album Vulgar Display of Power. A live medley of \"Hollow\" and another Pantera song, \"Domination\", is featured on Official Live: 101 Proof as \"Dom/Hollow\"."
+        }
+    ],
+    "2wikimqa": [
+        {
+            "id": "2wikimqa_c0a7c171085711ebbd5aac1f6bf848b6",
+            "input": "Are the directors of both films 2046 (Film) and Hason Raja (2017 Film) from the same country?",
+            "output": "no",
+            "context": "Document 1: (Title: Hason Raja (film))  Hason Raja (film) Hason Raja () is an Bangladeshi feature film directed by renowned British Bengali filmmaker Ruhul Amin, starring Mithun Chakraborty along with Raima Sen. The first look of the film was launched on 28 February 2017. The film is about Hason Raja, a flamboyant, ruthless zamindar from Sylhet who fell in love with Dilaram, who transformed him and later he became a poet, singing songs and wandering all across Bangladesh. Hinduism, Buddhism and Sufism have influenced his songs. He was the inspiration to the Nobel Prize winner Rabindranath Tagore who had mentioned about Hason Raja at several conferences"
+        },
+        {
+            "id": "2wikimqa_c6ce2ba8089211ebbd74ac1f6bf848b6",
+            "input": "Are director of film Eettillam and director of film El Zorro Pierde El Pelo from the same country?",
+            "output": "no",
+            "context":"Document 1: (Title: Piantadino)  Iglesias, known for his title role in \"El Zorro pierde el pelo\". Other stars were Norma Giménez, Juan José Porta and Rodolfo Onetto. Carlos Fioriti played \"Afanancio\" and Rafael Diserio played \"Batilio\". The film premiered at the \"Ocean\" cinema on March 24, 1950. While working for an insurance company, the title character, Piantadino, a shy man, is selected by sly characters to insure some things that they will later make disappear. Though Piantadino lacks courage, he nonetheless uncovers the fraudulent activity, making a positive impression on his fiancée's father. Piantadino Piantadino is a 1950 Argentine Spanish language comedy film directed"
+        },
+        {
+            "id": "2wikimqa_60dfb03a088a11ebbd6fac1f6bf848b6",
+            "input": "Are the directors of films 1 Mile To You and Mauvais Sang both from the same country?",
+            "output": "no",
+            "context":"Document 1: (Title: Mile After Mile)  number of French Canadian artists, including Patrick Norman, Renée Martel, Paul Brunelle, Stephen Faulkner, Laurence Jalbert, Les Respectables and Fred Pellerin. On the 2012 special to promote her new French-language album \"Sans attendre\", Céline Dion performed \"Mille après mille\" in duet with Pellerin. Joly wrote \"Mile After Mile\" when arriving in Elliot Lake after a series of mechanical problems with his car. Mile After Mile \"Mile After Mile\" is a song written and composed in 1969 by Canadian singer-songwriter Gerry Joly. It was a 1971-72 hit single for Canadian country singer Orval Prophet. \"Mile After Mile\" debuted at number 49"
+        },
+        {
+            "id": "2wikimqa_de34e6c908d411ebbd98ac1f6bf848b6",
+            "input": "Are both Eli Cohen (Footballer, Born 1951) and Sir Francis Lee, 4Th Baronet from the same country?",
+            "output": "no",
+            "context":"Document 1: (Title: Francis Lee)  Francis Lee Francis Henry \"Franny\" Lee (born 29 April 1944 in Westhoughton, Lancashire, England) is a former professional footballer. Lee played for Bolton Wanderers, Manchester City, Derby County and England. A fast forward, he won League Championship medals with Manchester City and Derby, and scored more than 200 goals in his career. In 2010, he was inducted into the English Football Hall of Fame. He holds the English record for the greatest number of penalties scored in a season, a feat which earned him the nickname \"Lee Won Pen\" and led to accusations of diving. One such accusation, from Leeds"
+        },
+        {
+            "id": "2wikimqa_6e591eda08b811ebbd88ac1f6bf848b6",
+            "input": "Which film has the director who is older than the other, Sweetheart Of The Navy or Sleepwalk With Me? ",
+            "output": "Sweetheart Of The Navy",
+            "context":"Document 1: (Title: The Careless Years)  it is best to wait until they are older. The film was originally called \"The Young Lovers\". The female lead went to Natalie Trundy, who was then 16 and had only made one film. Bryna Productions signed her to a five year contract. The male lead went to former child actor Dean Stockwell, who was also signed to a five year contract. It was the first feature as director for Arthur Hiller. Hiller recalls he was offered the job, he \"read the script, and I liked it a lot, but I had reservations. And I thought, \"Do I tell him"
+        }
+    ],
     "arc_c": [
         {
             "id": "Mercury_7015750",

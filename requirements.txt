@@ -1,10 +1,10 @@
-torch<=2.1.2
-transformers==4.36.2
-scipy
+torch==2.4.0
+transformers==4.36.2 # may update to transformers==4.43.4
+scipy # use 1.10.1 for pyserini bm25 retrieval
 packaging
 sentencepiece
-datasets<=2.17.0  # 2.18.0 throws many warnings and caching seems not working in distributed setup
-deepspeed>=0.10.0
+datasets
+deepspeed==0.15.4
 accelerate==0.31.0
 peft>=0.4.0
 bitsandbytes>=0.41.1
@@ -15,9 +15,7 @@ openai>=1.0.0
 tiktoken
 sentence_transformers==2.7.0
 rouge_score
-# tensorboard
-mlflow
-# gradio==3.50.2
+wandb
 termcolor
 jsonlines
 unidic-lite

@@ -9,6 +9,7 @@ import random
 import datasets
 from datetime import timedelta, datetime
 import time
+from copy import deepcopy
 
 import torch
 from torch.nn import functional as F
@@ -23,13 +24,22 @@ import transformers
 from transformers import (
     AutoConfig,
     AutoModelForSequenceClassification,
+    AutoModelForCausalLM,
     AutoTokenizer,
     SchedulerType,
     get_scheduler,
 )
 from huggingface_hub import HfApi
+import numpy as np
+import deepspeed
 
 from utils import push_folder_to_hub
+from evaluate_passages import (
+    evaluate_rankings,
+    convert_ctxs,
+    rerank_contexts,
+    load_data,
+)
 
 logger = get_logger(__name__)
 
@@ -261,6 +271,51 @@ def parse_args():
         default=None,
         help='The revision of the repo to push to.',
     )
+    parser.add_argument(
+        "--eval_file",
+        type=str,
+        help="A JSON file containing the evaluation data.",
+    )
+    parser.add_argument(
+        "--evaluate",
+        action="store_true",
+        help="Whether to perform evaluation during training.",
+    )
+    parser.add_argument(
+        "--max_new_tokens",
+        type=int,
+        default=50,
+        help="Max number of new tokens to generate during evaluation.",
+    )
+    parser.add_argument(
+        "--metrics",
+        choices=["em", "accuracy", "f1"],
+        nargs="+",
+        default=["accuracy"],
+        help="Evaluation metrics to compute.",
+    )
+    parser.add_argument(
+        "--num_proc",
+        type=int,
+        default=4,
+        help="Number of processes for data loading.",
+    )
+    parser.add_argument(
+        "--use_context",
+        action="store_true",
+        help="Whether to use context in the prompt.",
+    )
+    parser.add_argument(
+        "--use_chat_prompt",
+        action="store_true",
+        help="Whether to use chat model.",
+    )
+    parser.add_argument(
+        '--d_conf_threshold',
+        type=float,
+        default=0.8,
+        help='LLM decision confidence threshold',
+    )
     args = parser.parse_args()
 
     # Sanity checks
@@ -306,6 +361,52 @@ def tokenize_func(example, tokenizer, max_length):
 
     return inputs
 
+def get_confidence(log_prob_lsr):
+
+    # max(p) / sum(p)
+    # prob = np.exp(log_prob_lsr)
+    # confidence = max(prob) / sum(prob)
+
+    # entropy
+    prob = np.exp(log_prob_lsr)
+    entropy = -np.sum(prob * np.log(prob))
+    confidence = 1 - entropy / np.log(len(prob))
+
+    return confidence
+
+# Prepare reference model separately
+def prepare_deepspeed(accelerator, model):
+    deepspeed_plugin = accelerator.state.deepspeed_plugin
+    config_kwargs = deepcopy(deepspeed_plugin.deepspeed_config)
+
+    if model is not None:
+        if hasattr(model, "config"):
+            hidden_size = (
+                max(model.config.hidden_sizes)
+                if getattr(model.config, "hidden_sizes", None)
+                else getattr(model.config, "hidden_size", None)
+            )
+            if hidden_size is not None and config_kwargs["zero_optimization"]["stage"] == 3:
+                # Note that `stage3_prefetch_bucket_size` can produce DeepSpeed messages like:
+                # `Invalidate trace cache @ step 0: expected module 1, but got module 0`
+                # This is expected and is not an error, see: https://github.com/microsoft/DeepSpeed/discussions/4081
+                config_kwargs.update(
+                    {
+                        "zero_optimization.reduce_bucket_size": hidden_size * hidden_size,
+                        "zero_optimization.stage3_param_persistence_threshold": 10 * hidden_size,
+                        "zero_optimization.stage3_prefetch_bucket_size": 0.9 * hidden_size * hidden_size,
+                    }
+                )
+
+    # If ZeRO-3 is used, we shard both the active and reference model.
+    # Otherwise, we assume the reference model fits in memory and
+    # is initialized on each device with ZeRO disabled (stage 0)
+    if config_kwargs["zero_optimization"]["stage"] != 3:
+        config_kwargs["zero_optimization"]["stage"] = 0
+    model, *_ = deepspeed.initialize(model=model, config=config_kwargs)
+    model.eval()
+    return model
+
 def main():
     args = parse_args()
 
@@ -314,6 +415,10 @@ def main():
     # in the environment
     accelerator_log_kwargs = {}
 
+    args.output_dir = os.path.join(
+        args.output_dir,
+        f"{args.model_name_or_path.replace('/', '_')}__{args.d_conf_threshold}__{args.train_file.split('/')[-1].split('.')[0]}__{args.seed}",
+    )
     if args.with_tracking:
         accelerator_log_kwargs["log_with"] = args.report_to
         accelerator_log_kwargs["project_dir"] = args.output_dir
@@ -366,6 +471,13 @@ def main():
             data_files=data_files,
             **dataset_args,
         )
+
+    # Load evaluation data
+    if args.evaluate:
+        eval_data = load_data(args.eval_file)
+
+        k_values = [1, 3, 5, 10, 20]  # Adjust as needed
+        convert_ctxs(eval_data)
 
     # Load pretrained model and tokenizer
     if args.config_name:
@@ -423,10 +535,19 @@ def main():
             args.model_name_or_path,
             torch_dtype='auto',
             return_dict=True,
+            trust_remote_code=args.trust_remote_code,
+        )
+        # Create a copy of the model before training for reference outputs
+        reference_model = AutoModelForSequenceClassification.from_pretrained(
+            args.model_name_or_path,
+            torch_dtype='auto',
+            return_dict=True,
+            trust_remote_code=args.trust_remote_code,
         )
     else:
         logger.info("Training new model from scratch")
         model = AutoModelForSequenceClassification.from_config(config)
+        reference_model = AutoModelForSequenceClassification.from_config(config)
 
     train_dataset = raw_datasets["train"]
 
@@ -435,7 +556,7 @@ def main():
         max_train_samples = min(len(train_dataset), args.max_train_samples)
         logger.info(f"Limiting training samples to {max_train_samples} from {len(train_dataset)}.")
         train_dataset = train_dataset.select(range(max_train_samples))
-    
+
     # tokenize the dataset
     train_dataset = train_dataset.map(
         partial(tokenize_func,
@@ -468,12 +589,14 @@ def main():
         else:
             tokenize_input = {'input_ids': [],
                               'attention_mask': []}
-        
+
         log_prob_lsrs = []
+        confidences = []
         for example in examples:
             for key in tokenize_input.keys():
                 tokenize_input[key].extend(example[key])
             log_prob_lsrs.append(example['log_prob_lsrs'])
+            confidences.append(get_confidence(example['log_prob_lsrs']))
             example.pop('log_prob_lsrs')
 
         tokenized = tokenizer.pad(
@@ -485,6 +608,7 @@ def main():
         )
 
         tokenized['log_prob_lsrs'] = torch.tensor(log_prob_lsrs)
+        tokenized['confidences'] = torch.tensor(confidences)
 
         return tokenized
 
@@ -537,6 +661,9 @@ def main():
     model, optimizer, train_dataloader, lr_scheduler = accelerator.prepare(
         model, optimizer, train_dataloader, lr_scheduler
     )
+    
+    # Prepare reference model
+    reference_model = prepare_deepspeed(accelerator, reference_model)
 
     # We need to recalculate our total training steps as the size of the training dataloader may have changed.
     num_update_steps_per_epoch = math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
@@ -556,10 +683,12 @@ def main():
         experiment_config = vars(args)
         # TensorBoard cannot log Enums, need the raw value
         experiment_config["lr_scheduler_type"] = experiment_config["lr_scheduler_type"].value
+
+        # use wandb for tracking
+        args.run_name = f"{args.model_name_or_path.replace('/', '_')}__{args.d_conf_threshold}__{args.train_file.split('/')[-1].split('.')[0]}__{args.seed}__{int(time.time())}"
         accelerator.init_trackers(args.experiment_name,
                                   experiment_config,
-                                  init_kwargs={"mlflow": {"run_name": args.run_name}})
-        # You should consider other ways to log this if you are not using MLflow.
+                                  init_kwargs={"wandb": {"name": args.run_name}})
 
     # Train!
     total_batch_size = args.per_device_train_batch_size * accelerator.num_processes * args.gradient_accumulation_steps
@@ -612,7 +741,6 @@ def main():
     progress_bar.update(completed_steps)
 
     for epoch in range(starting_epoch, args.num_train_epochs):
-        model.train()
         total_loss = 0
         if (
             args.resume_from_checkpoint
@@ -626,15 +754,29 @@ def main():
         else:
             active_dataloader = train_dataloader
         for step, batch in enumerate(active_dataloader):
+            model.train()
             with accelerator.accumulate(model):
                 log_prob_lsrs = batch.pop('log_prob_lsrs')
+                confidences = batch.pop('confidences')
+                # truncate confidences less than threshold
+                confidences[confidences < args.d_conf_threshold] = 0
+                alpha = confidences.unsqueeze(1)
                 outputs = model(**batch)
                 logits = outputs.logits
-                logits = logits.view(-1, args.ctxs_num)
+                logits = logits.view(-1, args.ctxs_num) # (batch_size, ctxs_num)
+                with torch.no_grad():
+                    reference_outputs = reference_model(**batch)
+                reference_logits = reference_outputs.logits
+                reference_logits = reference_logits.view(-1, args.ctxs_num)
                 log_prob_lsrs = log_prob_lsrs.view(-1, args.ctxs_num)
-                p_r = F.softmax(logits, dim=-1)
+                log_p_r = torch.log(F.softmax(logits, dim=-1))
+                log_p_o = torch.log(F.softmax(reference_logits, dim=-1))
                 # use KL Divergence loss
-                loss = F.kl_div(torch.log(p_r), log_prob_lsrs, reduction='batchmean', log_target=True)
+                learning_loss = F.kl_div(log_p_r, log_prob_lsrs, reduction='none', log_target=True)
+                reference_loss = F.kl_div(log_p_r, log_p_o, reduction='none', log_target=True)
+                loss = (1 - alpha) * reference_loss + alpha * learning_loss
+                # Align with batch mean (reduction='batchmean')
+                loss = loss.sum() / log_p_r.size(0)
                 # We keep track of the loss at each logged step
                 total_loss += loss.detach().float()
                 accelerator.backward(loss)
@@ -670,6 +812,27 @@ def main():
                             output_dir = os.path.join(args.output_dir, output_dir)
                         save_with_accelerate(accelerator, model, output_dir)
 
+                        if args.evaluate:
+                            model.eval()
+                            logger.info("Evaluating...")
+
+                            # Copy data to avoid modifying the original
+                            eval_data_copy = deepcopy(eval_data)
+                            rerank_contexts(eval_data_copy, model, tokenizer)
+
+                            logger.info("Re-evaluating rankings after reranking")
+                            reranked_results = evaluate_rankings(eval_data_copy, k_values, logger)
+                            # Log reranked results to wandb
+                            for k, metrics in reranked_results.items():
+                                accelerator.log(
+                                    {
+                                        "train_step": completed_steps,
+                                        f"Reranked MRR@{k}": metrics["MRR@K"],
+                                        f"Reranked R@{k}": metrics["R@K"],
+                                    },
+                                    step=completed_steps,
+                                )
+
                 if completed_steps >= args.max_train_steps:
                     break
 
@@ -691,13 +854,13 @@ def main():
 
     if args.push_to_hub:
         if args.hf_repo_id is None:  # auto-generate one
-            args.hf_repo_id = "rag_ler_dev"
+            args.hf_repo_id = "rag-ler"
         if args.hf_entity is None:  # try to use the user's entity
             args.hf_entity = HfApi().whoami()["name"]
         args.hf_repo_id = f"{args.hf_entity}/{args.hf_repo_id}"
         if args.hf_repo_revision is None:  # auto-generate one
             args.hf_repo_revision = (
-                f"{args.experiment_name}__{args.model_name_or_path.replace('/', '_')}__{args.seed}__{int(time.time())}"
+                args.run_name
             )
         args.hf_repo_url = f"https://huggingface.co/{args.hf_repo_id}/tree/{args.hf_repo_revision}"
         push_folder_to_hub(accelerator, args.output_dir, args.hf_repo_id, args.hf_repo_revision)
