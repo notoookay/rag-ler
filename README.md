@@ -8,6 +8,10 @@ This repo includes the implementation of our paper **RAG-LER: Ranking Adapted Ge
 
 We introduce **RAG-LER**, a novel framework that enhances an LM’s context understanding and improves the quality and accuracy of provided passages through an LM-supervised re-ranker. **RAG-LER** fine-tunes a pre-trained LM to follow instructions and discriminately use provided information. It then leverages this fine-tuned LM to generate ranking scores, which serve as supervised labels for training the re-ranker.
 
+## Update (Mar 18th, 2025)
+
+- We open-weighted our trained [Mistral-7B](https://huggingface.co/notoookay/ragler-mistral-7b) model on HuggingFace to encourage and advance further research.
+
 ## Update (Dec 28th, 2024)
 
 - We have updated our re-ranker training method which incorporates a reference model during training.
