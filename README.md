@@ -1,6 +1,6 @@
 # RAG-LER: Ranking Adapted Generation with Language-Model Enabled Regulation
 
-This repo includes the implementation of our paper **RAG-LER: Ranking Adapted Generation with Language-Model Enabled Regulation**.
+This repo includes the implementation of our paper [**RAG-LER: Ranking Adapted Generation with Language-Model Enabled Regulation**](https://authors.elsevier.com/a/1loEd3INukWAMb).
 
 ![RAG-LER](img/RAG-LER.png)
 
@@ -27,8 +27,6 @@ We introduce **RAG-LER**, a novel framework that enhances an LM’s context unde
 - [Evaluation](#evaluation)
 - [Contributing](#contributing)
 - [Citation](#citation)
-
-<!-- Add Citation -->
 
 ## Installation
 
@@ -163,7 +161,22 @@ bash ./scripts/run_llm.sh
 
 ## Citation
 
-Coming soon.
+If you find our work helpful, please consider citing our paper:
+
+```bibtex
+@article{ZHAI2025131514,
+title = {RAG-LER: Ranking adapted generation with language-model enabled regulation},
+journal = {Neurocomputing},
+volume = {656},
+pages = {131514},
+year = {2025},
+issn = {0925-2312},
+doi = {https://doi.org/10.1016/j.neucom.2025.131514},
+url = {https://www.sciencedirect.com/science/article/pii/S0925231225021861},
+author = {Fengwen Zhai and Wenyang Tang and Jing Jin},
+keywords = {Language modeling, Retrieval augmented generation, Information retrieval, Re-ranking}
+}
+```
 
 ## Contributing
 
